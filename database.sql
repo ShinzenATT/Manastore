@@ -9,12 +9,12 @@ CREATE TABLE users (id int(99) PRIMARY KEY AUTO_INCREMENT,
                     password varchar(24) NOT NULL,
                    color varchar(6) NOT NULL DEFAULT "5F24A9",
                    creation timestamp DEFAULT current_timestamp,
-                   logins int(999) DEFAULT 0,
-                   spent int(9999) DEFAULT 0
+                   logins int(255) DEFAULT 0,
+                   spent int(255) DEFAULT 0
                   );
 
 CREATE TABLE adress (userID int(99), 
-                     FOREIGN KEY (userID) REFERENCES user(id),
+                     FOREIGN KEY (userID) REFERENCES users(id),
                      adress varchar(150),
                      city varchar(150),
                      postcode int(5),
@@ -47,7 +47,7 @@ CREATE TABLE watchlist (userID int(99),
                         FOREIGN KEY (product) REFERENCES product(id)
                        );
                        
-CREATE TABLE review (id int(999) PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE review (id int(255) PRIMARY KEY AUTO_INCREMENT,
                      product int(99),
                      FOREIGN KEY (product) REFERENCES product(id),
                      userID int(99),
@@ -59,7 +59,7 @@ CREATE TABLE review (id int(999) PRIMARY KEY AUTO_INCREMENT,
                      creation timestamp DEFAULT current_timestamp
                     );    
                     
-CREATE TABLE reviewReply (review int(999),
+CREATE TABLE reviewReply (review int(255),
                           FOREIGN KEY (review) REFERENCES review(id),
                           userID int(99),
                           FOREIGN KEY (userID) REFERENCES users(id),
@@ -120,7 +120,7 @@ CREATE TABLE blog (id int(99) PRIMARY KEY AUTO_INCREMENT,
                    creation timestamp DEFAULT current_timestamp
                   );                           
                   
-CREATE TABLE comments (id int(999) PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE comments (id int(255) PRIMARY KEY AUTO_INCREMENT,
                        userID int(99),
                        FOREIGN KEY (userID) REFERENCES users(id),
                        content varchar(290),
@@ -128,7 +128,7 @@ CREATE TABLE comments (id int(999) PRIMARY KEY AUTO_INCREMENT,
                        creation timestamp DEFAULT current_timestamp
                       );           
                       
-CREATE TABLE commentReply (comment int(999),
+CREATE TABLE commentReply (comment int(255),
                           FOREIGN KEY (comment) REFERENCES comments(id),
                           userID int(99),
                           FOREIGN KEY (userID) REFERENCES users(id),
@@ -158,5 +158,6 @@ CREATE TABLE highlights (id int(99) PRIMARY KEY AUTO_INCREMENT,
                          description varchar(290),
                          identifier varchar(99),
                          target varchar(90),
+                         picAdjustment int(4),
                          type ENUM('product', 'blog', 'link')
                         );                        
