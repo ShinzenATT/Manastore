@@ -9,40 +9,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="style.php">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Raleway|Ubuntu" rel="stylesheet">
-    <script src="js/jquery-1.8.1.min.js" type="text/javascript"></script>
-    <script src="js/StackBlur.js" type="text/javascript"></script>
-    <script src="js/html2canvas.js" type="text/javascript"></script>
 
     <script>
-        $(function() {
-            html2canvas($("body"), {
-                onrendered: function(canvas) {
-                    $(".blurheader").append(canvas);
-                    $("canvas").attr("id", "canvas");
-                    stackBlurCanvasRGB('canvas', 0, 0, $("canvas").width(), $("canvas").height(), 20);
-                }
-
-
-            });
-            vv = setTimeout(function() {
-                $("header").show();
-                clearTimeout(vv);
-            }, 200)
-        })
-        $(window).scroll(function() {
-            $("canvas").css("-webkit-transform", "translatey(-" + $(window).scrollTop() + "px)");
-        })
-        window.onresize = function() {
-            $("canvas").width($(window).width());
-        }
-
-        $(document).bind('touchmove', function() {
-            $("canvas").css("-webkit-transform", "translatey(-" + $(window).scrollTop() + "px)");
-        })
-        $(document).bind('touchend', function() {
-            $("canvas").css("-webkit-transform", "translatey(-" + $(window).scrollTop() + "px)");
-        })
 
         function displaySearch(){
             
@@ -61,10 +32,9 @@
 </head>
 
 <body>
-
-    <section>
         <header>
             <div id="navContainer">
+               <!-- Left side of the navbar -->
                 <div><a href=""><img src="img/Resurs%201.svg"></a>
                     <a href="">
                         <nav>
@@ -87,7 +57,9 @@
                         </nav>
                     </a>
                 </div>
+                <!-- Right side of the navbar. Note: the i tags have the material icon font on them -->
                 <div>
+                   <!-- Search bar. It's usally hidden until the search icon is clicked. -->
                     <nav id="navSearch" style="display: none; opacity: 0;">
                         <form method="get">
                             <input type="search" placeholder="Type to search..." name="search" value="<?php if(isset($_GET['search'])){
@@ -96,6 +68,7 @@
                             <input class="material" type="submit" value="search">
                         </form>
                     </nav>
+                    <!-- Icons -->
                     <a href="#" onclick="displaySearch()">
                         <nav><i id="SIcon">search</i></nav>
                     </a>
@@ -112,10 +85,6 @@
                 </div>
             </div>
         </header>
-        <div class="blurheader">
-
-        </div>
-    </section>
 
 </body>
 
