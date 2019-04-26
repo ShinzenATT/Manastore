@@ -6,8 +6,8 @@ CREATE TABLE users (id int(99) PRIMARY KEY AUTO_INCREMENT,
                    name varchar(40), 
                    birthdate date, 
                    email varchar(50) unique,
-                    password varchar(24) NOT NULL,
-                   color varchar(6) NOT NULL DEFAULT "5F24A9",
+                    password varchar(32) NOT NULL,
+                   color varchar(7) NOT NULL DEFAULT "5F24A9",
                    creation timestamp DEFAULT current_timestamp,
                    logins int(255) DEFAULT 0,
                    spent int(255) DEFAULT 0
@@ -96,7 +96,8 @@ CREATE TABLE sale (product int(99),
                       userID int(99),
                       FOREIGN KEY (userID) REFERENCES users(id),
                       orderDate timestamp DEFAULT current_timestamp,
-                      status varchar(20)
+                      status varchar(20),
+                      adress int(2)
                      );
                      
 CREATE TABLE orderProduct (orderNR int(99),
@@ -158,6 +159,33 @@ CREATE TABLE highlights (id int(99) PRIMARY KEY AUTO_INCREMENT,
                          description varchar(290),
                          identifier varchar(99),
                          target varchar(90),
-                         picAdjustment int(4),
+                         picAdjustment varchar(25),
                          type ENUM('product', 'blog', 'link')
-                        );                        
+                        );       
+
+-- Highlight content
+
+INSERT INTO highlights (title, description, identifier, target, picAdjustment, type) VALUES ("Welcome!", "Welcome to Mana Store! The new webbshop for your gaming shopping needs! Feel free to browse our collection.", "welcome", '#', "center", 'link');
+
+INSERT INTO highlights (title, description, identifier, target, picAdjustment, type) VALUES ("Joker for Smash!", "The end of april is nearing and soon the release of the 3.0 patch for Super Smash Bros Ultimate. The patch contains a stagebuilder and Joker, the long awaited high school rebel.", "smash3_0", '#', "bottom", 'blog');
+
+-- Products
+
+INSERT INTO product (name, identifier, publisher, developer, digitalPrice, physicalPrice, releaseDate, ageRating) VALUES("Yakuza 0", "yakuza0", "SEGA", "SEGA", 209, 299, '2015-03-15', 5);
+INSERT INTO platforms VALUES (1,"ps3");
+INSERT INTO platforms VALUES (1,"ps4");
+INSERT INTO platforms VALUES (1,"windows");
+INSERT INTO platforms VALUES (1,"steam");
+INSERT INTO sale VALUES (1, 15, "Opening sale");
+
+INSERT INTO product (name, identifier, publisher, developer, digitalPrice, physicalPrice, releaseDate, ageRating) VALUES("The Legend of Zelda: Breath of the Wild", "tloz_botw", "Nintendo", "Nintendo", 559, 649, '2017-03-03', 3);
+INSERT INTO platforms VALUES (2,"wiiu");
+INSERT INTO platforms VALUES (2,"switch");
+
+INSERT INTO product (name, identifier, publisher, developer, digitalPrice, physicalPrice, releaseDate, ageRating) VALUES("Slime Rancher", "slime_rancher", "Monomi Park", "Monomi Park", 209, 299, '2017-07-01', 1);
+INSERT INTO platforms VALUES (3,"mac");
+INSERT INTO platforms VALUES (3,"ps4");
+INSERT INTO platforms VALUES (3,"windows");
+INSERT INTO platforms VALUES (3,"steam");
+INSERT INTO platforms VALUES (3,"xone");
+INSERT INTO platforms VALUES (3,"linux");

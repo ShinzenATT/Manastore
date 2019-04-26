@@ -17,7 +17,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Mana Store Startpage</title>
-
 </head>
 
 <body>
@@ -26,40 +25,86 @@
     <div class="slideshow-container" onload="currentSlide(1);">
 
         <!-- Full-width images with number and caption text -->
-        <a href="">
-            <div class="mySlides fade" style="display:block;">
-                <img onload="currentSlide(1)" src="" style="background-image: url(https://images.theabcdn.com/i/28145092.jpg)">
+
+        <?php 
+            $query = "SELECT * FROM highlights ORDER BY id DESC;";
+            $result = mysqli_query($dbc, $query);
+            $first = true;
+            while($highlight = mysqli_fetch_array($result)){
+            ?>
+        <a href="
+            <?php switch($highlight['type']){
+                case "link":
+                    echo $highlight['target'];
+                    break;
+                case "product":
+                    echo "#";
+                    break;
+                case "blog":
+                    echo "#";
+                    break;
+            }    
+            ?>
+            ">
+            <div class="mySlides fade" style="
+               <?php if($first){
+                $first = false; ?>
+               display:block; 
+               <?php } ?>
+               ">
+                <img src="" style="background-image: url(
+                <?php 
+                $identifier = $highlight['identifier'];
+                $target_file = "content/highlights/$identifier.jpg";
+                $imgCheck = file_exists($target_file);
+                if($imgCheck){
+                echo $target_file;
+                }
+                else {
+                    echo "img/error.png";
+                } 
+                ?>
+                ); background-position: <?php if($imgCheck){
+                    echo $highlight['picAdjustment'];
+                }
+                else{
+                    echo "bottom";
+                }
+                ?>">
                 <div class="text">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut beatae eveniet maiores quas vitae rem corporis nemo, quos neque harum.</p>
+                    <h3><?php echo $highlight['title']; ?></h3>
+                    <p><?php echo $highlight['description']; ?></p>
+                </div>
+                <!-- Button -->
+                <div class="highlightButton">
+                    <h3><?php switch($highlight['type']){
+                case "link":
+                    echo "Go to page";
+                    break;
+                case "blog":
+                    echo "Go to article";
+                    break;
+                case "product":
+                    echo "TBA";
+                    break;       
+            }
+                    ?></h3>
                 </div>
             </div>
         </a>
-
-        <div class="mySlides fade">
-            <img src="" style="background-image: url(https://www.nintendo.se/images/gallery/sw_switch_splatoon_2/__gallery/002__OCTO_Expansion/Splatoon2_Octo_ss_vs_00.jpg)">
-            <div class="text">Caption Two</div>
-        </div>
-
-        <div class="mySlides fade">
-            <img src="" style="background-image: url(https://s3.dexerto.com/thumbnails/_thumbnailLarge/nintendo-switch-super-smash-bros-ultimate-dlc-characters-leaked-surprising-nintendo-direct.jpg)">
-            <div class="text">Caption Three</div>
-        </div>
+        <?php } ?>
 
         <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
-        <!-- Button -->
-        <a href="">
-            <div id="highlightButton">
-                <h3>450kr</h3>
-            </div>
-        </a>
         <!-- The dots/circles -->
         <div id="dotContainer" style="text-align:center">
-            <span class="dot" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
+            <?php
+            $result = mysqli_query($dbc, "SELECT COUNT(id) AS count FROM highlights;");
+            $count = mysqli_fetch_array($result);
+                for($i= 1 ; $i <= $count['count'] ; $i++){ ?>
+            <span class="dot" onclick="currentSlide(<?php echo $i; ?>)"></span>
+            <?php } ?>
         </div>
         <div id="shadow"></div>
     </div>
@@ -71,27 +116,136 @@
         </form>
     </div>
     <div id="Discover">
-        <div class="product"><img style="background-image: url(https://gematsu.com/wp-content/uploads/2017/08/Yakuza-Kiwami-2-Announce_08-26-17.jpg)">
-            <h3>Yakuza Kiwami 2</h3>
-            <div class="platformsA horizontalScroll">
-               <span>
-               
-                <img src="img/Papirus-Team-Papirus-Apps-Steam.svg" alt="">
-                <img src="img/icons8-uplay-filled.svg" alt="">
-                <img src="img/icons8-origin.svg" alt="">
-                <span id="platformHighlight">
-                <img src="img/icons8-windows8.svg" alt="">
-                <img src="img/icons8-apple-logo.svg" alt="">
-                <img src="img/linux-logo.svg" alt="">
-                </span>
-                </span>
-                <img src="img/icons8-nintendo-wii-u.svg" alt="">
-                <img src="img/icons8-playstation.svg" alt="">
-                <img src="img/icons8-xbox.svg" alt="">
-                <img src="img/Nintendo-3DS-01%20%5BKonvert%5D.svg" alt="">
-                
+      
+       <!-- Products -->
+        <h2>Nya produkter</h2>
+        <div class="productContainer">
+        
+        <?php
+            $query = "SELECT id,name,identifier,digitalPrice,physicalPrice FROM product ORDER BY releaseDate DESC;";
+            $result = mysqli_query($dbc, $query);
+            
+            while($product = mysqli_fetch_array($result)){
+                $id = $product['id'];
+                for($i = 0;$i<6;$i++){
+        ?>
+        <a href="">
+            <div class="product"><img style="background-image: url(<?php 
+                $identifier = $product['identifier'];
+                $filePath = "content/products/$identifier/preview.jpg";
+                if(file_exists($filePath)){
+                    echo $filePath;
+                }
+                else{
+                    echo "img/error.png";
+                }
+                ?>)">
+                <div class="productTitle">
+                    <h3><?php echo $product['name']; ?></h3>
+                </div>
+                <div class="platformsA">
+                   <?php 
+                    $platforms = array();
+                    $platformQuery = mysqli_query($dbc, "SELECT * FROM platforms WHERE product = $id;");
+                    while($plat = mysqli_fetch_array($platformQuery)){
+                        array_push($platforms, $plat['platform']);
+                    }
+                    
+                    ?>
+                    <span>
+                        <?php if(in_array("steam", $platforms)) { ?>
+                        <img src="img/Papirus-Team-Papirus-Apps-Steam.svg" alt="">
+                        <?php } ?>
+                        <?php if(in_array("uplay", $platforms)) { ?>
+                        <img src="img/icons8-uplay-filled.svg" alt="">
+                        <?php } ?>
+                        <?php if(in_array("origin", $platforms)) { ?>
+                        <img src="img/icons8-origin.svg" alt="">
+                        <?php } ?>
+                        <span id="platformHighlight">
+                           <?php if(in_array("windows", $platforms)) { ?>
+                            <img src="img/icons8-windows8.svg" alt="">
+                            <?php } ?>
+                            <?php if(in_array("mac", $platforms)) { ?>
+                            <img src="img/icons8-apple-logo.svg" alt="">
+                            <?php } ?>
+                            <?php if(in_array("linux", $platforms)) { ?>
+                            <img src="img/linux-logo.svg" alt="">
+                            <?php } ?>
+                        </span>
+                    </span>
+                    <?php if(in_array("switch", $platforms)) { ?>
+                    <img src="img/nintendo_switch_red.svg">
+                    <?php } ?>
+                    <?php if(in_array("wiiu", $platforms)) { ?>
+                    <img src="img/icons8-nintendo-wii-u.svg" alt="">
+                    <?php } ?>
+                       <span>
+                       <?php if(in_array("ps3", $platforms)) { ?>
+                        <img src="img/ps3.png">
+                        <?php } ?>
+                        <?php if(in_array("ps4", $platforms)) { ?>
+                        <img src="img/ps4.png">
+                        <?php } ?>
+                        <span id="platformHighlight">
+                           <?php if(in_array("ps3", $platforms) || in_array("ps4", $platforms)) { ?>
+                            <img src="img/icons8-playstation.svg" alt="">
+                        <?php } ?>
+                        </span>
+                    </span>
+                    <span>
+                       <?php if(in_array("x360", $platforms)) { ?>
+                        <img src="img/360.png">
+                        <?php } ?>
+                        <?php if(in_array("xone", $platforms)) { ?>
+                        <img src="img/one.png">
+                        <?php } ?>
+                           <span id="platformHighlight">
+                           <?php if(in_array("x360", $platforms) || in_array("xone", $platforms)) { ?>
+                            <img src="img/icons8-xbox.svg" alt="">
+                        <?php } ?>
+                        </span>
+                    </span>
+                    <?php if(in_array("3ds", $platforms)) { ?>
+                    <img src="img/Nintendo-3DS-01%20%5BKonvert%5D.svg" alt="">
+                    <?php } ?>
+                </div>
+                <div class="pricePreview">
+                    <div class="saleA" <?php 
+                                            
+                                            $saleCheck = mysqli_query($dbc, "SELECT * FROM sale WHERE product = $id;");
+                                            $discount;
+                                            $precent = 1;
+                                           if($sale = mysqli_fetch_array($saleCheck)){
+                                               
+                                               $discount = $sale['discount'];
+                                               $precent = (100 - $discount)/100;
+                                               
+                                           }
+                                            else {
+                                                echo 'style="visibility: hidden;"';
+                                            }
+                                           ?>>
+                        <?php
+                    if(isset($discount)){
+                        echo $discount . '%';
+                    }
+                else {
+                    echo '0%';
+                }
+                ?>
+                    </div> <span><span>
+                        <p><?php echo (int)($product['physicalPrice'] * $precent) . 'kr'; ?></p> </span>
+                           <!-- <?php echo $product['physicalPrice'] ?> -->
+                           <span class="highlightPrice">
+                            <p><?php echo (int)($product['digitalPrice'] * $precent) . 'kr'; ?></p>
+                            <!-- <?php echo $product['digitalPrice'] ?> -->
+                        </span>
+                    </span>
+                </div>
             </div>
-            <div class="pricePreview"><div class="saleA">10%</div> <p>240kr</p></div>
+        </a>
+        <?php }} ?>
         </div>
     </div>
     <script>
@@ -130,7 +284,8 @@
 
         }
         
-   
+        
+
 
     </script>
 

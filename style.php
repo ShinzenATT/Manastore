@@ -7,13 +7,12 @@ header("Content-type: text/css"); //makes this file act as a .css file
     // checks if there is a color variable
     if(isset($_SESSION['color'])){
         $temp = $_SESSION['color'];
-        $color = new Color("$temp");
+        $color = new Color($temp);
     }
     else{
         $color = new Color('#6928BA');
     }
     $hsl = $color->getHSL();
-    
 
 ?>
 
@@ -44,7 +43,7 @@ h4, h5, p {
     font-family: 'Raleway', sans-serif;
 }
 
-/* for blur effect in the navbar */
+
 header{
 
     height: 68px;
@@ -206,6 +205,201 @@ nav i , .material {
      right: 60px;
 }
 
+#accountMenu {
+    width: 26vw;
+    height: 12vw;
+    box-sizing: border-box;
+    background-color: #fffe;
+    position: fixed;
+    right: 15%;
+    top: 68px;
+    z-index: 49;
+    padding: 1vw;
+    border-radius: 10px;
+}
+
+#accountMenuContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#accountMenuContent div {
+    display: inline-block;
+}
+
+#accountMenuContent div button{
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.2vw;
+    margin-top: 1px;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+#accountMenuContent div h3, #accountMenuContent div h4{
+    margin: 0.7vw;
+}
+
+#accountMenuContent div button:hover {
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    color: white;
+}
+
+#accountMenu img {
+    width: 10vw;
+    height: 10vw;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10vw;
+    margin: 0;
+    
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+    border: none;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #9B69D9;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: none;
+  width: 80%; /* Could be more or less, depending on screen size */
+  max-width: 500px;
+    z-index: 10;
+    border-radius: 10px;
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0; 
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Bordered form */
+#id01 form {
+  border: none;
+    color: #fff;
+}
+
+/* Full-width inputs */
+ .container input[type=email], .container input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #2B2642;
+  box-sizing: border-box;
+     border-radius: 20px;
+     background-color: #44405E;
+     color: #fff;
+}
+
+/* Set a style for all buttons */
+.container div button {
+  background-color: #605B7C;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 48%;
+    display: inline-block;
+    border-radius: 12px;
+    transition: 0.6s ease;
+}
+
+/* Add a hover effect for buttons */
+.container div button:hover {
+  opacity: 0.7;
+}
+
+.container div {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+/* Extra style for the cancel button (red) */
+#cancelbtn {
+  width: 100%;
+  padding: 10px 18px;
+    border: none;
+    color: #f44336;
+    background-color: #605B7C;
+    border-radius: 12px;
+    transition: 0.6s ease;
+}
+
+#cancelbtn:hover {
+    color: white;
+    background-color: #f44336;
+}
+
+#close {
+    background-color: #BC97EA;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+    
+    border-radius: 10px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  #cancelbtn {
+    width: 100%;
+  }
+}
+
 /* Slideshow container */
 .slideshow-container {
   width: 100%;
@@ -322,7 +516,7 @@ nav i , .material {
 .active, .dot:hover {
   background-color: hsl(<?php echo $hsl['H'] . ", 55%, 53%"; ?>);
 }
-#highlightButton {
+.highlightButton {
     display: inline-block;
     width: 10vw;
     position: absolute;
@@ -339,14 +533,14 @@ nav i , .material {
     transition: 0.6s ease;
 }
 
-#highlightButton:hover {
+.highlightButton:hover {
     font-size: 1.2vw;
     background-color: #fffd;
     color: hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
     
 }
 
-#highlightButton h3 {
+.highlightButton h3 {
     padding: 0;
     margin: 0;
 }
@@ -364,14 +558,14 @@ nav i , .material {
     left: 0;
 }
 
-/* Fading animation */
+/* Fading animation 
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
 }
-/*
+
 @-webkit-keyframes fade {
   from {opacity: .4} 
   to {opacity: 1}
@@ -387,24 +581,48 @@ nav i , .material {
 #Discover {
     width: 70vw;
     margin: auto;
-    height: 100vh;
     background-color: #2B2642;
     margin-top: 1vh;
+    border-radius: 10px;
+    color: #fff;
+    padding-top: 1px;
+   
+}
+
+.productContainer {
+     display: flex;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+#Discover h2 {
+    margin: 0.7vw;
+    margin-left: 1vw;
+    width: 100%;
 }
 
 .product{
-    max-width: 10vw;
+    width: 9vw;
     min-width: 180px;
-    margin: 1vw;
+    margin: 0.5vw;
     background-color: #44405E;
     border-radius: 10px;
     color: #fff;
+    border: 1px solid hsl( <?php echo $hsl["H"] . ", 60%, 63%"; ?>);
+    display: inline-block;
 }
 
 .product h3 {
     margin: 5px;
     margin-top: 0;
     color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+}
+
+.productTitle {
+    font-size: 0.8em;
+    height: 3em;
+    font-size-adjust: auto;
 }
 
 .product img{
@@ -415,6 +633,7 @@ nav i , .material {
     border-radius: 10px 10px 0 0;
     border-color: none;
     margin: 0;
+    border: 1px solid hsl( <?php echo $hsl["H"] . ", 60%, 63%"; ?>);
 }
 
 .platformsA {
@@ -424,12 +643,29 @@ nav i , .material {
     justify-content: flex-start;
     cursor: all-scroll;
     margin-bottom: 5px;
+    
+}
+
+.platformsA::-webkit-scrollbar {
+    height: 10px;
+}
+
+.platformsA::-webkit-scrollbar-thumb{
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>);
+    border-radius: 7px;
+}
+
+.platformsA::-webkit-scrollbar-track-piece {
+    background-color: #605B7C;
+    height: 5px;
+    border-radius: 30px;
 }
 
 .platformsA span {
     display: flex;
     border-radius: 10px;
     background-color: #605B7C;
+    margin-left: 3px;
 }
 
 #platformHighlight {
@@ -437,13 +673,16 @@ nav i , .material {
     margin: 0;
 }
 
+
+
 .platformsA img {
-    height: 2.5vh;
+    height: 2vh;
     min-height: 10px;
     width: auto;
     margin: 0;
     margin: 0.5vh;
     border-radius: 0;
+    border: 0 none;
     
 }
 
@@ -462,6 +701,54 @@ nav i , .material {
 
 .pricePreview * {
     margin: 5px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.pricePreview p {
+    font-size: 0.9em;
+    margin-top: 0;
+    display: inline;
+    margin: 20px 8px;
+    font-weight: 600;
+}
+
+.pricePreview span span:not(.highlightPrice) {
+    border-radius: 10px 0 0 10px;
+    background-color: #605B7C;
+    padding-right: 0;
+    margin-right: 8px;
+    position: relative;
+    z-index: 1;
+    margin-right: 0;
+    text-align: center;
+}
+
+.highlightPrice {
+    background-color: hsl(<?php echo $hsl['H'] . ",66%, 75%" ?>) ;
+    border:  1px solid hsl(<?php echo $hsl['H'] . ",66%, 75%" ?>);
+    border-radius: 0 10px 10px 0;
+    margin: 0;
+    transition: 0.6s ease;
+    z-index: 2;
+    margin-left: 0;
+    text-align: center;
+}
+
+.product:hover  .pricePreview .highlightPrice {
+    background-color: #fff;
+    color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+    border:  1px solid hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+}
+
+.saleA {
+    background-color: #fff;
+    border:  1px solid hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+    color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+    border-radius: 10px;
+    padding: 2px 5px;
+    margin-right: 0;
+    
+    
 }
 
 #menu1 {
@@ -473,3 +760,21 @@ nav i , .material {
     left: 0.5vw;
     color: white;
 }
+
+#register {
+    width: 70vw;
+    background-color: #2B2642;
+    top: 100px;
+    margin: auto;
+    position: relative;
+}
+
+#error {
+    width: 100%;
+    color: #fff;
+    background-color: red;
+    padding: 0.2vw;
+}
+
+
+
