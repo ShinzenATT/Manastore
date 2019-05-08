@@ -35,7 +35,7 @@ body {
     transition: 0.6s ease;
 }
 
-h1, h2, h3 {
+h1, h2, h3, label {
     font-family:'Ubuntu', sans-serif;
 }
 
@@ -250,11 +250,18 @@ nav i , .material {
 #accountMenu img {
     width: 10vw;
     height: 10vw;
+    
+}
+
+.pfp{
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     border-radius: 10vw;
+    min-width: 1vw;
+    min-height: 1vw;
+    display: inline-block;
     margin: 0;
-    
 }
 
 /* The Modal (background) */
@@ -776,5 +783,85 @@ nav i , .material {
     padding: 0.2vw;
 }
 
+#userFeed {
+    background-color: #2B2642;
+    padding-bottom: 1vh;
+    top: 100px;
+    margin: auto;
+    position: relative;
+    width: 70vw;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#userInfo {
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    padding: 1vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 1vw;
+    border-radius: 10px;
+    flex-wrap: nowrap;
+}
+
+#userInfo .pfp {
+    width: 15vw;
+    height: 15vw;
+}
+
+#userInfo div {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 75%;
+    font-size: 1.4em;
+}
+
+#userInfo div span form button{
+    border: none;
+    width: 9vw;
+    box-sizing: border-box;
+    padding: 0.2vw;
+    margin-top: 1px;
+    border-radius: 20px;
+    border: 1px #fff0 solid;
+    transition: 0.3s ease;
+    
+}
+
+#userInfo div span form button:hover {
+    background-color: hsl(<?php echo $hsl['H'] . ", 65%, 44%"; ?>);
+    color: white;
+    border: 1px #fff solid;
+}
+
+.profileEdit input, .profileEdit button{
+    margin: 0.2vw;
+    width: 12vw;
+    border-radius: 15px;
+    display: inline;
+}
 
 
+.profileEdit {
+    padding: 0.5vw;
+    
+}
+
+.profileEdit, .profileEdit .adress{
+    display: inline-block;
+}
+
+.adress {
+    background-color: #44405E;
+    border-radius: 20px;
+    padding: 0.5vw;
+    padding-top: 0;
+}
+
+.adress h5 {
+    display: inline;
+}

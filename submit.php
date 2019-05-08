@@ -3,8 +3,7 @@
     if(isset($_POST['action'])){
         $action = $_POST['action'];
     }
-    session_start();
-    $dbc = mysqli_connect("localhost","root","","manastore");
+    require_once("connect.php");
     
 
 if(isset($_SESSION['status']) && $action != "logout"){
@@ -120,6 +119,9 @@ else if($action == "login"  && isset($_POST['email']) && isset($_POST['password'
         $_SESSION['color'] = $user['color'];
         $_SESSION['user'] = $user['id'];
         $_SESSION['status'] = "loggedin";
+        $logins = ++$user['logins'];
+        $id = $user['id'];
+        mysqli_query($dbc, "UPDATE users SET logins = $logins WHERE id = $id;");
         
     }
     else{

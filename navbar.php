@@ -1,6 +1,5 @@
 <?php 
- $dbc = mysqli_connect("localhost","root","","manastore");
- session_start();
+ require_once("connect.php");
 $status = null;
 if(isset($_SESSION['status'])){
     $status = $_SESSION['status'];
@@ -123,11 +122,15 @@ if(isset($_SESSION['status'])){
     ?>
     <div id="accountMenu" style="display: none">
         <div id="accountMenuContent">
-            <img style="background-image: url(
+            <img class="pfp" style="background-image: url(
                        <?php
-                              if(false){
-                                  echo "nop";
-                              }   
+                            $filepath = "content/userPF/$id";
+                              if(file_exists($filepath . ".jpg")){
+                                  echo $filepath . '.jpg';
+                              }
+                            else if(file_exists($filepath . '.png')){
+                                echo $filepath . '.png';
+                            }
                                  
                             else{
                                 echo "img/missing.png";
@@ -135,12 +138,12 @@ if(isset($_SESSION['status'])){
                                  ?>
                        )">
             <div>
-                <h3>Hello <?php echo $user['name']; ?> </h3>
+                <h3>Hej <?php echo $user['name']; ?> </h3>
                 <h4><?php echo $user['email']; ?></h4>
                 <?php } ?>
                 <a href=""><button>Se Order</button></a>
                 <a href=""><button>Önskelista</button></a>
-                <a href=""><button>Visa Profil</button></a>
+                <a href="profile.php"><button>Visa Profil</button></a>
                 <form action="submit.php" method="post">
                    
                     <button type="submit" name="action" value="logout">Logga ut</button>
