@@ -1,12 +1,13 @@
 <?php 
  require_once("connect.php");
+setlocale(LC_ALL, "sv_SE");
 $status = null;
 if(isset($_SESSION['status'])){
     $status = $_SESSION['status'];
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8" />
@@ -93,11 +94,25 @@ if(isset($_SESSION['status'])){
                 <a style="cursor: alias;" onclick="displaySearch()">
                     <nav><i id="SIcon">search</i></nav>
                 </a>
-                <a href="">
+                <a href="cart.php">
                     <nav>
+                       <?php
+                        
+                        ?>
                         <div id="cartCount">
-                            <p>13</p>
-                        </div><i id="cart">shopping_cart</i>
+                            <p>
+                                <?php
+                                if(isset($_SESSION['cart']) && ($count = count(json_decode($_SESSION['cart'], true)))) {
+                                echo $count;
+                                }
+                                else {
+                                    echo '0';
+                                }
+                                ?>
+                            </p>
+                        </div>
+                        <?php  ?>
+                        <i id="cart">shopping_cart</i>
                     </nav>
                 </a>
                 <a onclick="<?php

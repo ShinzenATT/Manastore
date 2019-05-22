@@ -12,7 +12,7 @@
     
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8">
@@ -129,7 +129,7 @@
                 $id = $product['id'];
                 for($i = 0;$i<6;$i++){
         ?>
-        <a href="">
+        <a href="<?php echo "product.php?product=" . $product['identifier']; ?>">
             <div class="product"><img style="background-image: url(<?php 
                 $identifier = $product['identifier'];
                 $filePath = "content/products/$identifier/preview.jpg";
@@ -283,10 +283,6 @@
             dots[slideIndex - 1].className += " active";
 
         }
-        
-        
-
-
     </script>
 
 

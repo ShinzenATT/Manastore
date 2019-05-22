@@ -97,7 +97,7 @@ CREATE TABLE sale (product int(99),
                       FOREIGN KEY (userID) REFERENCES users(id),
                       orderDate timestamp DEFAULT current_timestamp,
                       status varchar(20),
-                      adress int(2)
+                      adress varchar(150)
                      );
                      
 CREATE TABLE orderProduct (orderNR int(99),
@@ -169,8 +169,13 @@ INSERT INTO highlights (title, description, identifier, target, picAdjustment, t
 
 INSERT INTO highlights (title, description, identifier, target, picAdjustment, type) VALUES ("Joker for Smash!", "The end of april is nearing and soon the release of the 3.0 patch for Super Smash Bros Ultimate. The patch contains a stagebuilder and Joker, the long awaited high school rebel.", "smash3_0", '#', "bottom", 'blog');
 
--- Products
+-- Tags
+INSERT INTO tags (name) VALUES('Söt');
+INSERT INTO tags (name) VALUES('FPS');
+INSERT INTO tags (name) VALUES('Äventyr');
+INSERT INTO tags (name) VALUES('Färg glatt');
 
+-- Products
 INSERT INTO product (name, identifier, publisher, developer, digitalPrice, physicalPrice, releaseDate, ageRating) VALUES("Yakuza 0", "yakuza0", "SEGA", "SEGA", 209, 299, '2015-03-15', 5);
 INSERT INTO platforms VALUES (1,"ps3");
 INSERT INTO platforms VALUES (1,"ps4");
@@ -189,3 +194,7 @@ INSERT INTO platforms VALUES (3,"windows");
 INSERT INTO platforms VALUES (3,"steam");
 INSERT INTO platforms VALUES (3,"xone");
 INSERT INTO platforms VALUES (3,"linux");
+INSERT INTO tagproduct VALUES(3,1);
+INSERT INTO tagproduct VALUES(3,2);
+INSERT INTO tagproduct VALUES(3,3);
+INSERT INTO tagproduct VALUES(3,4);

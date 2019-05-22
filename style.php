@@ -159,11 +159,11 @@ nav i , .material {
 }
 
 #cartCount p {
-    position: relative;
-    font-size: 0.9em;
+    margin: auto;
+    font-size: 0.7em;
     text-align: center;
-    left: 18%;
-    top: -6%;
+    font-weight: 600;
+    
 }
 
 #cart {
@@ -423,16 +423,19 @@ nav i , .material {
   display: none;
 }
 
-.mySlides img {
+.mySlides img, .mySlides iframe {
     height: 55vh;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     background-origin: border-box;
-    z-index: -2;
     width: 100%;
     position: relative;
+}
+
+.mySlides img{
+    z-index: -2;
 }
 
 .mySlides img::before {
@@ -455,7 +458,7 @@ nav i , .material {
   border-radius: 0 3px 3px 0;
   user-select: none;
     color: #fff;
-    background-color: #0003;
+    background-color: #0000;
 
     
 }
@@ -464,7 +467,7 @@ nav i , .material {
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
-    box-shadow: -0.2vw 0 7px #0003;
+   /* box-shadow: -0.2vw 0 7px #0003;*/
 }
 
 .next:hover {
@@ -473,7 +476,7 @@ nav i , .material {
 
 .prev {
     left: 0;
-    box-shadow: 0.2vw 0 5px #0003;
+   /* box-shadow: 0.2vw 0 5px #0003;*/
 }
 
 .prev:hover {
@@ -695,7 +698,7 @@ nav i , .material {
 
 .platformsA:hover {
     overflow-x: auto;
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
 }
 
 .pricePreview{
@@ -864,4 +867,300 @@ nav i , .material {
 
 .adress h5 {
     display: inline;
+}
+
+#productOverview {
+    background-color: #44405Eea;
+    color: #fff;
+    width: 18vw;
+    display: inline-block;
+    position: absolute;
+    top: 42vh;
+    right: 16vw;
+    padding: 1vw;
+    border-radius: 20px;
+}
+
+#productOverview span{
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+}
+
+#productOverview span h5 {
+    margin: 5px;
+    padding: 0;
+}
+
+#productOverview h2 {
+    color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    margin-bottom: 0.5vh;
+}
+
+.tag {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.1vw 0.3vw;
+    background-color: hsl(<?php echo $hsl['H'] . ", 66%, 75%" ?>);
+    color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+    border: 1px hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>) solid;
+    border-radius: 10px;
+    transition: 0.6s ease;
+    max-height: 2.5em;
+    overflow-x: auto;
+}
+
+.tag:hover {
+    background-color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+    color: #fff;
+    border-color: hsl(<?php echo $hsl['H'] . ", 66%, 75%" ?>);
+}
+
+.tag p {
+    margin: 0;
+}
+
+#purchase {
+    position: relative;
+    left: 15vw;
+    width: 48vw;
+}
+
+.purchase {
+    background-color: #44405E;
+    display:inline-block;
+    border-radius: 20px;
+    padding: 0.5vw;
+    width: 100%;
+    color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-left: 0;
+}
+
+.purchase h2 {
+    margin: auto 1vh;
+    width: 100%;
+}
+
+.pButton1{
+    color: #fff;
+    font-size: 20px;
+    background-color: hsl(<?php echo $hsl['H'] . ", 66%, 75%" ?>);
+    border-radius: 20px 0 0 20px;
+    padding:0px;
+    box-sizing: border-box;
+    display: inline-block;
+    transition: 0.6s ease;
+}
+
+.pButton2 {
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    border-radius: 20px;
+    margin: 0;
+    padding: 0px;
+    display: inline-block;
+    
+}
+
+.pButton2 i {
+    font-size: 18px;
+    margin: 3px 5px 5px 3px;
+    color: #fff;
+}
+
+.pButton1 p {
+    display: inline-block;
+    margin: 3px 10px;
+}
+
+.purchase:hover button .pButton2 .pButton1 {
+    color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+}
+
+.purchase button {
+    background-color: #0000;
+    border: none;
+    border-radius: 20px;
+}
+
+#description {
+    background-color: #44405E;
+    position: relative;
+    left: 15vw;
+    display: inline-block;
+    color: white;
+    width: 48vw;
+    margin 10px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    max-height: 50vh;
+    overflow: hidden;
+}
+
+#description span {
+   display: inline-block;
+    margin: 0 0.7vw;
+}
+
+.expand {
+    width: 100%;
+    background-color:  hsla(<?php echo $hsl['H'] . ", 55%, 53%, 0.9" ?>);
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+}
+
+#productInfo {
+    position: absolute;
+    right: 16vw;
+    width: 18vw;
+    top: 78vh;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+}
+
+.pInfoPart {
+    background-color: #44405E;
+    border-radius: 20px;
+    padding: 0.7vw;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 1vh;
+}
+
+.pInfoPart img {
+    height: 120px;
+    margin: 0;
+}
+
+.pInfoPart span {
+    display: block;
+    flex-wrap: nowrap;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.pInfoPart span h2, .pInfoPart span h1 {
+    margin: 0;
+    font-size: 1.1em;
+    color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+}
+
+.cartProduct {
+    background-color: #44405E;
+    box-sizing: border-box;
+    padding: 1vw;
+    margin: 1vw;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.cartProduct img {
+    width: 11vw;
+    height: 6vw;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    border-radius: 20px;
+    background-color: red;
+    border: none;
+}
+
+.cartProduct div:not(.priceO), .cartProduct div span {
+    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0.5vw;
+    align-content: space-between;
+    height: 100%;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cartProduct div span {
+    width: 17vw;
+}
+
+.cartProduct div h2 {
+    display: inline-block;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.saleText {
+    color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    font-weight: 600;
+}
+
+.priceO {
+    display: inline-block;
+    width: auto;
+}
+
+.cartProduct div span form button, #cartActions button {
+    border-radius: 20px;
+    border: 1px #0000 solid;
+    margin: 1em auto;
+    margin-bottom: auto;
+    transition: 0.6s ease;
+}
+
+.cartProduct div span form button:hover, #cartActions button:hover {
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+    color: #fff;
+    border-color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
+}
+
+#cartActions {
+    margin: 1vw;
+    
+}
+
+#payContainer {
+    background-color: #2B2642;
+    padding: 1vh;
+    top: 100px;
+    margin: auto;
+    position: relative;
+    width: 30vw;
+    box-sizing: border-box;
+    color: #fff;
+    border-radius: 10px;
+}
+
+#payContainer button {
+    border: none;
+    background: #0000;
+    width: 100%;
+    color: #fff;
+}
+
+#payContainer div img {
+    height: 50px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+#payContainer div {
+    display: flex;
+    justify-content: flex-start;
+    margin: auto;
+    width: 90%;
+    background-color: #44405E;
+    border-radius: 20px;
+    margin: 10px;
+    align-items: center;
 }

@@ -20,7 +20,7 @@
     
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8">
@@ -268,8 +268,8 @@
                 </span>
                 <span>
                     <h4>Födelsedag: <?php
-                           $birth = date_create($user['birthdate']);
-                           echo $birth->format("m-d");
+                           
+                           echo strftime('%d %B', strtotime($user['birthdate']));
                            ?></h4>
                     <h4>Antal inloggningar: <?php echo $user['logins']; ?></h4>
                     <h4>Pengar spenderat: <?php echo $user['spent']; ?>kr</h4>
