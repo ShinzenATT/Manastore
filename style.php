@@ -43,6 +43,25 @@ h4, h5, p {
     font-family: 'Raleway', sans-serif;
 }
 
+#beta{
+    
+    margin: 0;
+    padding: 0;
+}
+
+#beta div{
+    background-color: hsl(<?php echo $hsl['H'] . ", 55%, 53%"; ?>);
+    position: fixed;
+    bottom: 0%;
+    right: 3%;
+    padding:  0.5em 1em;
+    border-radius: 20px 20px 0  0;
+    
+}
+
+#beta div h3{
+    margin: 0;
+}
 
 header{
 
@@ -1164,3 +1183,17 @@ nav i , .material {
     margin: 10px;
     align-items: center;
 }
+
+#aboutusContainer{
+    background-color: #44405E;
+    border-radius: 20px;
+    position: absolute;
+    top: 10vh;
+    padding: 1vw;
+    margin: auto;
+    text-align: center;
+    width: 60%;
+    left: 20%;
+    color: #fff;
+}
+

@@ -19,6 +19,9 @@
     if($pay){
         $_SESSION['payed'] = true;
         if(isset($_POST['adress'])){
+            if($_POST['adress'] == '!add!'){
+                header('location: profile.php?action=edit');
+            }
             $_SESSION['adress'] = $_POST['adress'];
         }
 ?>

@@ -6,8 +6,6 @@ if(isset($_SESSION['status'])){
     $status = $_SESSION['status'];
 }
 ?>
-<!DOCTYPE html>
-<html lang="sv">
 
 <head>
     <meta charset="UTF-8" />
@@ -63,7 +61,7 @@ if(isset($_SESSION['status'])){
                         <h2>Butik</h2>
                     </nav>
                 </a>
-                <a href="">
+                <a href="index.php">
                     <nav>
                         <h2>Utforska</h2>
                     </nav>
@@ -73,7 +71,7 @@ if(isset($_SESSION['status'])){
                         <h2>Blog</h2>
                     </nav>
                 </a>
-                <a href="">
+                <a href="about_us.php">
                     <nav>
                         <h2>Om oss</h2>
                     </nav>
@@ -212,8 +210,9 @@ if(isset($_SESSION['status'])){
             </div>
         </form>
     </div> <?php } ?>
-
-
+    <a id="beta" href="https://github.com/ShinzenATT/Wes-och-Weu-Slutprojekt" target="_blank">
+    <div>
+        <h3>Beta</h3>
+    </div>
+    </a>
 </body>
-
-</html>
