@@ -41,10 +41,27 @@ if(isset($_SESSION['status'])){
 
         function account() {
             var show = document.getElementById('accountMenu').style;
+            var icon = document.getElementById('aIcon');
             if (show.display == 'none') {
                 show.display = "block";
+                icon.innerHTML = 'account_box'
             } else {
                 show.display = "none";
+                icon.innerHTML = 'account_circle';
+            }
+        }
+        function linkMenu() {
+            var menu = document.getElementById('menu');
+            var icon = document.getElementById('mIcon');
+            if(menu.style.display == 'none'){
+                menu.style.display = "";
+                console.log("menu show");
+                icon.innerHTML = "arrow_upward";
+            }
+            else {
+                menu.style.display = 'none';
+                console.log("menu hide");
+                icon.innerHTML = 'menu';
             }
         }
 
@@ -55,7 +72,7 @@ if(isset($_SESSION['status'])){
     <header>
         <div id="navContainer">
             <!-- Left side of the navbar -->
-            <div><a href="index.php"><img src="img/Resurs%201.svg"></a>
+            <div id="navLeft"><a href="index.php"><img src="img/Resurs%201.svg"></a>
                 <a href="">
                     <nav>
                         <h2>Butik</h2>
@@ -78,23 +95,15 @@ if(isset($_SESSION['status'])){
                 </a>
             </div>
             <!-- Right side of the navbar. Note: the i tags have the material icon font on them -->
-            <div>
-                <!-- Search bar. It's usally hidden until the search icon is clicked. -->
-                <nav id="navSearch" style="display: none; opacity: 0;">
-                    <form method="get">
-                        <input type="search" placeholder="Type to search..." name="search" value="<?php if(isset($_GET['search'])){
-    echo $_GET['search'];
-} ?>">
-                        <input class="material" type="submit" value="search">
-                    </form>
-                </nav>
+            <div id="navRight">
+
                 <!-- Icons -->
                 <a style="cursor: alias;" onclick="displaySearch()">
                     <nav><i id="SIcon">search</i></nav>
                 </a>
                 <a href="cart.php">
                     <nav>
-                       <?php
+                        <?php
                         
                         ?>
                         <div id="cartCount">
@@ -121,11 +130,45 @@ if(isset($_SESSION['status'])){
                                     echo "account()";
                                 }
                                  ?>" style="cursor: alias;">
-                    <nav><i>account_circle</i></nav>
+                    <nav><i id="aIcon">account_circle</i></nav>
+                </a>
+                <a id="navMenu" onclick="linkMenu()">
+                    <nav><i id="mIcon">menu</i></nav>
                 </a>
             </div>
         </div>
     </header>
+    <!-- Search bar. It's usally hidden until the search icon is clicked. -->
+    <nav id="navSearch" style="display: none; opacity: 0;">
+        <form method="get">
+            <input type="search" placeholder="Type to search..." name="search" value="<?php if(isset($_GET['search'])){
+    echo $_GET['search'];
+} ?>">
+            <input class="material" type="submit" value="search">
+        </form>
+    </nav>
+    <div id="menu" style="display:none;">
+        <a href="">
+                    <nav>
+                        <h2>Butik</h2>
+                    </nav>
+                </a>
+                <a href="index.php">
+                    <nav>
+                        <h2>Utforska</h2>
+                    </nav>
+                </a>
+                <a href="">
+                    <nav>
+                        <h2>Blog</h2>
+                    </nav>
+                </a>
+                <a href="about_us.php">
+                    <nav>
+                        <h2>Om oss</h2>
+                    </nav>
+                </a>
+    </div>
     <?php if($status == "loggedin" ){ 
                     if(isset($_SESSION['user'])){
                         $id = $_SESSION['user'];
@@ -158,7 +201,7 @@ if(isset($_SESSION['status'])){
                 <a href=""><button>Önskelista</button></a>
                 <a href="profile.php"><button>Visa Profil</button></a>
                 <form action="submit.php" method="post">
-                   
+
                     <button type="submit" name="action" value="logout">Logga ut</button>
                 </form>
             </div>
@@ -192,27 +235,27 @@ if(isset($_SESSION['status'])){
                                       }
     ?>
                 <label for="uname"><b>E-Mail</b></label>
-                <input type="email" placeholder="Enter E-Mail" name="email" required>
+                <input type="email" placeholder="Fyll i Email" name="email" required>
 
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="password" required>
+                <label for="psw"><b>Lösenord</b></label>
+                <input type="password" placeholder="Fyll i lösenord" name="password" required>
                 <div>
-                    <button type="submit" value="login" name="action">Login</button>
-                    <button type="submit" value="register" name="action" style="color: #BC97EA">Register</button>
+                    <button type="submit" value="login" name="action">Logga in</button>
+                    <button type="submit" value="register" name="action" style="color: #BC97EA">Registrera</button>
                 </div>
                 <label>
-                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                    <input type="checkbox" checked="checked" name="remember"> Kom ihåg mig
                 </label>
             </div>
 
             <div class="container" id="close" style="">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn">Cancel</button>
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" id="cancelbtn">Avbryt</button>
             </div>
         </form>
     </div> <?php } ?>
     <a id="beta" href="https://github.com/ShinzenATT/Wes-och-Weu-Slutprojekt" target="_blank">
-    <div>
-        <h3>Beta</h3>
-    </div>
+        <div>
+            <h3>Beta</h3>
+        </div>
     </a>
 </body>

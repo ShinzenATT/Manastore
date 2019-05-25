@@ -47,6 +47,7 @@ h4, h5, p {
     
     margin: 0;
     padding: 0;
+    transition: 0.6s ease;
 }
 
 #beta div{
@@ -73,6 +74,7 @@ header{
     z-index: 50;
     left: 0;
     border-radius: 0 0 15px 15px;
+    
 }
 
 header {
@@ -97,7 +99,7 @@ header div a img {
     display: flex;
     justify-content: space-between;
     overflow: hidden;
-    
+    transition: 0.6s ease;
 }
 
 a  {
@@ -126,7 +128,6 @@ nav {
     color: hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
     
 }
-
 
 
  /*
@@ -205,6 +206,7 @@ nav i , .material {
     position: relative;
     margin-top: 17px;
     width: 5vw;
+    margin: auto;
 }
 
 #navSearch form input {
@@ -216,17 +218,28 @@ nav i , .material {
 }
 
  #navSearch {
-    display: flex;
+    display: inline-block;
+     background-color: hsla(<?php echo $hsl['H'] . ", 60%, 63%, 0.85"; ?>);
     align-items: center;
     align-content: center;
-    position: relative;
+    position: fixed;
      transition: opacity 1s;
-     right: 60px;
+     right: 20%;
+     top: 68px;
+     width: 250px;
+     padding: 10px;
+     border-radius: 20px;
+     transition: width 0.6s ease;
 }
 
+#navMenu {
+    display: none;
+    
+}
+
+
 #accountMenu {
-    width: 26vw;
-    height: 12vw;
+    width: 450px;
     box-sizing: border-box;
     background-color: #fffe;
     position: fixed;
@@ -251,7 +264,7 @@ nav i , .material {
     border: none;
     width: 100%;
     box-sizing: border-box;
-    padding: 0.2vw;
+    padding: 3px;
     margin-top: 1px;
     border-radius: 20px;
     transition: 0.3s ease;
@@ -267,8 +280,8 @@ nav i , .material {
 }
 
 #accountMenu img {
-    width: 10vw;
-    height: 10vw;
+    width: 200px;
+    height: 200px;;
     
 }
 
@@ -276,9 +289,9 @@ nav i , .material {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 10vw;
-    min-width: 1vw;
-    min-height: 1vw;
+    border-radius: 200px;
+    min-width: 180px;
+    min-height: 180px;
     display: inline-block;
     margin: 0;
 }
@@ -302,7 +315,7 @@ nav i , .material {
 /* Modal Content/Box */
 .modal-content {
   background-color: #9B69D9;
-  margin: 5px auto; /* 15% from the top and centered */
+  margin: 15px auto; /* 15% from the top and centered */
   border: none;
   width: 80%; /* Could be more or less, depending on screen size */
   max-width: 500px;
@@ -453,6 +466,10 @@ nav i , .material {
     position: relative;
 }
 
+.ytp-cued-thumbnail-overlay-image{
+    background-attachment: fixed;
+}
+
 .mySlides img{
     z-index: -2;
 }
@@ -547,23 +564,23 @@ nav i , .material {
 }
 .highlightButton {
     display: inline-block;
-    width: 10vw;
+    width: 170px;
     position: absolute;
-    top: 45.7vh;
+    top: 82%;
     right: 20vw;
     background: hsla(<?php echo $hsl['H'] . ", 65%, 44%, 0.9"; ?>);
     border-radius: 20px;
     display:flex;
     justify-content: center;
     align-items: center;
-    height: 3vw;
-    font-size: 1vw;
+    min-height:  50px;
+    font-size: 1em;
     border: 2px solid hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
     transition: 0.6s ease;
 }
 
 .highlightButton:hover {
-    font-size: 1.2vw;
+    font-size: 1.2em;
     background-color: #fffd;
     color: hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
     
@@ -667,16 +684,27 @@ nav i , .material {
 
 .platformsA {
     display: flex;
-    overflow: hidden;
+    overflow-y: hidden;
     align-items: center;
     justify-content: flex-start;
     cursor: all-scroll;
     margin-bottom: 5px;
-    
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-.platformsA::-webkit-scrollbar {
+.platformsA:hover{
+      scrollbar-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>) #605B7C;
+    scrollbar-width: thin;
+}
+
+.platformsA::-webkit-scrollbar{
+    height: 0px;
+}
+
+.platformsA:hover::-webkit-scrollbar {
     height: 10px;
+    margin-top: 1px;
 }
 
 .platformsA::-webkit-scrollbar-thumb{
@@ -715,7 +743,7 @@ nav i , .material {
     
 }
 
-.platformsA:hover {
+.product:hover .platformsA {
     overflow-x: auto;
     /* margin-bottom: 0; */
 }
@@ -729,7 +757,7 @@ nav i , .material {
 }
 
 .pricePreview * {
-    margin: 5px;
+    margin: 4px;
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -796,6 +824,20 @@ nav i , .material {
     top: 100px;
     margin: auto;
     position: relative;
+    border-radius: 20x;
+}
+
+#register input, #register button {
+    width: 100%;
+    margin: 5px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 2px;
+}
+
+#register form {
+    width: 45%;
+    margin: 25px auto;
 }
 
 #error {
@@ -827,6 +869,7 @@ nav i , .material {
     padding: 1vw;
     border-radius: 10px;
     flex-wrap: nowrap;
+    font-size: 0.8em;
 }
 
 #userInfo .pfp {
@@ -839,7 +882,7 @@ nav i , .material {
     justify-content: space-between;
     align-items: flex-start;
     width: 75%;
-    font-size: 1.4em;
+    font-size: 1.2em;
 }
 
 #userInfo div span form button{
@@ -862,7 +905,9 @@ nav i , .material {
 
 .profileEdit input, .profileEdit button{
     margin: 0.2vw;
-    width: 12vw;
+    width: 250px;
+    height: 25px;
+    padding: 2px;
     border-radius: 15px;
     display: inline;
 }
@@ -882,10 +927,24 @@ nav i , .material {
     border-radius: 20px;
     padding: 0.5vw;
     padding-top: 0;
+    text-align: center;
+    margin: 3px;
+    margin: auto;
+}
+
+.adress button {
+    height: 35px;
+    width: 200px;
 }
 
 .adress h5 {
     display: inline;
+}
+
+.productSlideshow #dotContainer {
+    text-align:center; 
+    left: 16vw; 
+    right: auto;
 }
 
 #productOverview {
@@ -1049,7 +1108,7 @@ nav i , .material {
 .pInfoPart {
     background-color: #44405E;
     border-radius: 20px;
-    padding: 0.7vw;
+    padding: 15px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -1110,13 +1169,14 @@ nav i , .material {
 }
 
 .cartProduct div span {
-    width: 17vw;
+    width: 40%;
 }
 
 .cartProduct div h2 {
     display: inline-block;
     margin: 0;
     word-wrap: break-word;
+    width: 60%;
 }
 
 .saleText {
@@ -1184,6 +1244,12 @@ nav i , .material {
     align-items: center;
 }
 
+#payContainer div select {
+    width: 100%;
+    border-radius: 20px;
+    height: 30px;
+}
+
 #aboutusContainer{
     background-color: #44405E;
     border-radius: 20px;
@@ -1195,5 +1261,304 @@ nav i , .material {
     width: 60%;
     left: 20%;
     color: #fff;
+    min-width: 608px;
 }
 
+#menu {
+    display: none;
+}
+
+@media screen and (max-width: 900px){
+    #navLeft nav {
+        display: none;
+    }
+    
+    #navMenu {
+        display: inline-block;
+    }
+    
+    #beta div {
+        transform: rotate(-90deg);
+        right: -20px;
+        bottom: 200px;
+        opacity: 0.8;
+        z-index: 2;
+    }
+    
+    #accountMenuContent div a button, #accountMenuContent div form button {
+        padding: 10px 3px;
+    }
+    
+    #menu {
+        background-color: hsla(<?php echo $hsl['H'] . ", 85%, 34%, 0.9"; ?>);
+        display: inline-block;
+        position: fixed;
+        top: 68px;
+        width: 100%;
+        z-index: 2;
+        border-radius: 20px;
+        overflow: hidden;
+        padding: 0;
+    }
+    
+    #menu nav {
+        display: inline-block;
+        width: 24.52%;
+        box-sizing: border-box;
+        text-align: center;
+        transition: 0.6s ease;
+    }
+    
+    #menu nav:hover {
+        background-color: #fffa;
+        color: hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
+    }
+    
+    .highlightButton {
+        top: 62%;
+    }
+    
+    .text {
+        width: 65.6%
+    }
+    
+    #shadow {
+        box-shadow: 0 -14vh 60px #000b;
+    }
+    
+    #productOverview {
+        right: 5%;
+        left: 5%;
+        margin: auto;
+        width: 90%;
+        top: -8vh;
+        position: relative;
+        margin-bottom: 0;
+    }
+    
+    #purchase{
+        width: 90%;
+        left: 5%;
+        margin-top: 0vh;
+        top: -6vh;
+    }
+    
+    #description {
+        width: 90%;
+        left: 5%;
+        top: -6vh;
+    }
+    
+    #productInfo {
+        position: relative;
+        top: 0;
+        width: 90%;
+        right: 5%;
+        left: 5%;
+        top: -6vh;
+    }
+    
+    .productSlideshow #shadow {
+        top: 55vh;
+    }
+    
+    #userFeed {
+        width: 80%;
+    }
+    
+    .cartProduct div{
+        flex-wrap: wrap !important;
+    }
+    
+    .cartProduct img {
+        height: 12vw;
+        width: 17vw
+    }
+    
+    .cartProduct div span {
+        width: 100%;
+    }
+    
+    .cartProduct div h2{
+        width: 100%;
+        font-size: 1.2em;
+    }
+    
+    #userInfo div span {
+        display: inline-block;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: center space-between;
+    }
+    
+    #userInfo div span * {
+        display: inline-block;
+        margin: 10px;
+    }
+    
+    #userInfo div {
+        flex-wrap: wrap;
+    }
+    
+    #userInfo div span form button {
+        padding: 10px;
+        width: auto;
+    }
+    
+    #payContainer {
+        width: 75%;
+    }
+    
+    .profileEdit{
+        width: 50%;
+        box-sizing: border-box;
+        padding: 1vw;
+    }
+    
+    .profileEdit input, .profileEdit button {
+        width: 100%;
+    }
+    
+    .adress button {
+        width: 200px;
+    }
+    
+    .adress{
+        margin: 3px;
+    }
+    
+    #register form {
+        width: 99%;
+    }
+    
+    #aboutusContainer{
+        min-width: 0;
+        width: 80%;
+        left: 10%;
+        right: 10%;
+    }
+    
+    #imgConsole{
+        display: none;
+    }
+    }
+
+@media screen and (max-width: 640px){
+    
+    #beta{
+        font-size: 0.8em;
+        border-radius: 10px;
+    }
+    
+    #navContainer{
+        width: 90%;
+    }
+    
+    #navSearch{
+        width: 100%;
+        left: 0;
+        top: 0;
+        height: 116px;
+        border-radius:  0 0 20px 20px;
+        margin: auto;
+        z-index: 2;
+    }
+    
+    #navSearch form{
+        margin-top: 68px;
+    }
+    
+    #navSearch form input[type=search]{
+        width: 50vw;
+    }
+    
+    #accountMenu {
+        width: 100%;
+        right: 0;
+    }
+    
+    #accountMenu img {
+        width: 35vw;
+        height: 35vw;
+    }
+    
+    #accountMenuContent div a button, #accountMenuContent div form button {
+       padding: 10px 3vw;
+    }
+    
+    #menu nav {
+        width: 100%;
+    }
+    
+    .highlightButton {
+        top: auto;
+        bottom: 0;
+        right: 0;
+        border-radius: 20px 20px 0 0 ;
+        width: 100%;
+        z-index: 1;
+    }
+    
+    .text {
+        top: auto;
+        bottom: 50
+    }
+    #dotContainer{
+        top: 70px;
+        right: 45%
+    }
+    
+    #shadow {
+        top: 50vh
+    }
+    
+    #Discover{
+        width: 98%
+    }
+    
+    #userFeed {
+        width: 90%;
+    }
+    
+    .cartProduct img {
+        height: 19vw;
+        width: 27vw;
+    }
+    
+    #userInfo div span *:not(form button) {
+        width: 100%;
+    }
+    
+    #userInfo {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    #userInfo .pfp {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+    }
+    
+    .profileEdit {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .adress {
+        width: 48%;
+        box-sizing: border-box;
+        margin: 1px;
+        margin-bottom: 5px;
+        font-size: 3vw;
+    }
+    
+    .adress button {
+        width: 100%;
+    }
+    
+    #register {
+        width: 90%;
+    }
+    
+}

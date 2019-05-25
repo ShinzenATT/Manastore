@@ -18,7 +18,6 @@ $sale = 1;
 if($saleCheck = mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM sale WHERE product = ". $product['id'] .";"))){
     $sale = (100 - $saleCheck['discount'])/100;
 }
-require("navbar.php");
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -26,11 +25,12 @@ require("navbar.php");
 <head>
     <meta charset="UTF-8">
     <title><?php echo $product['name']; ?></title>
+    <?php require("navbar.php"); ?>
 </head>
 
 <body>
     <!-- Slideshow container -->
-    <div class="slideshow-container" onload="currentSlide(1);">
+    <div class="slideshow-container productSlideshow" onload="currentSlide(1);">
 
         <!-- Full-width images with number and caption text -->
 
@@ -39,7 +39,7 @@ require("navbar.php");
             $i = 0;
             $a = 0;
             $exist = true;
-            $result =mysqli_query($dbc, "SELECT * FROM ytembed WHERE product = " . $product['id'] . " ;");
+            $result =mysqli_query($dbc, "SELECT * FROM ytEmbed WHERE product = " . $product['id'] . " ;");
             while($embed = mysqli_fetch_array($result)){ 
             $a++;
         ?>
@@ -86,7 +86,7 @@ require("navbar.php");
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
         <!-- The dots/circles -->
-        <div id="dotContainer" style="text-align:center; left: 16vw; right: auto;">
+        <div id="dotContainer" style="">
             <?php
             
                 for($j= 1 ; $j <= $a; $j++){ 

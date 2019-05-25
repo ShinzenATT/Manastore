@@ -49,6 +49,11 @@
         }
 
     </script>
+    <?php 
+    if($action == "edit" || !(isset($_POST['action']))){
+        require('navbar.php');
+    }
+    ?>
 </head>
 
 <body>
@@ -167,7 +172,6 @@
     
         
     else if($action == "edit"){
-    require('navbar.php');
     ?>
     <div id="userFeed">
         <?php
@@ -193,14 +197,15 @@
             <a href="profile.php"><button type="button">Avbryt</button></a>
         </form>
         
-        <form class="profileEdit" method="post" action="profile.php">
+        <form class="profileEdit" method="post" action="profile.php" style="float: right;">
             <input required type="adress" name="adress" placeholder="Enter adress here.."> <br>
             <input required type="number" name="postCode" placeholder="Postal Code"> <br>
             <input required type="text" name="City" placeholder="City"> <br>
             <input required type="text" name="Country" placeholder="Country"> <br>
             <button type="submit" name="action" value="addAdress">Add Adress</button>
         </form>
-        <form class="profileEdit" method="post" action="">
+        <hr>
+        <form class="profileEdit" method="post" action="" style="width: 100%;">
         <?php 
         $result = mysqli_query($dbc, "SELECT * FROM adress WHERE userID = $id ORDER BY adress;");
         
@@ -233,7 +238,6 @@
     }
     }
     else{
-        require('navbar.php');
     ?>
     <div id="userFeed">
         <div id="userInfo">
@@ -290,6 +294,7 @@
     <?php 
     }
     ?>
+    </div>
 </body>
 
 </html>

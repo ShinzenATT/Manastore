@@ -1,22 +1,13 @@
-<?php
-    require("navbar.php");
-    
-    if(isset($_GET['color'])){
-        $_SESSION['color'] = $_GET['color'];
-    }
-    if(isset($_GET['reset'])){
-        unset($_GET['reset']);
-        unset($_GET['color']);
-        unset($_SESSION['color']);
-    }
-    
-?>
+
 <!DOCTYPE html>
 <html lang="sv">
 
 <head>
     <meta charset="UTF-8">
     <title>Mana Store Startpage</title>
+    <?php
+    require("navbar.php");
+?>
 </head>
 
 <body>
@@ -108,13 +99,7 @@
         </div>
         <div id="shadow"></div>
     </div>
-    <div id="menu1">
-        <form action="index.php" method="get">
-            <input type="color" value="<?php if(isset($_GET['color'])){ echo $_GET['color']; } ?>" name="color">
-            <input type="submit" value="Change Color">
-            <input type="submit" value="Reset" name="reset">
-        </form>
-    </div>
+    
     <div id="Discover">
       
        <!-- Products -->
@@ -129,7 +114,7 @@
                 $id = $product['id'];
                 for($i = 0;$i<6;$i++){
         ?>
-        <a href="<?php echo "product.php?product=" . $product['identifier']; ?>">
+        <a draggable="false" href="<?php echo "product.php?product=" . $product['identifier']; ?>">
             <div class="product"><img style="background-image: url(<?php 
                 $identifier = $product['identifier'];
                 $filePath = "content/products/$identifier/preview.jpg";

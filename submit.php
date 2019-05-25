@@ -8,12 +8,13 @@
 
 if(isset($_SESSION['status']) && $action != "logout"){
     if($_SESSION['status'] == 'afterReg' && $action == null){ 
-    require('navbar.php'); ?>
-<html lang="en">
+     ?>
+<html lang="sv">
 
 <head>
     <meta charset="utf-8">
     <title>Add an adress</title>
+    <?php require('navbar.php'); ?>
 </head>
 
 <body>
@@ -70,10 +71,9 @@ else if($action="addAdress" && isset($_POST['adress']) && isset($_POST['postCode
 
 else{
     if(($action == null || $action == "register") ){
-        require('navbar.php');
     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
     <meta charset="UTF-8">
@@ -82,7 +82,7 @@ else{
 
 
     </script>
-
+    <?php require('navbar.php'); ?>
 </head>
 
 <body>
@@ -97,13 +97,13 @@ else{
                                       }
     ?>
         <form method="post" action="submit.php">
-            <input required type="text" placeholder="Enter E-mail" name="email" <?php if(isset($_POST['email'])){ ?> value="<?php echo $_POST['email'] ?>" <?php } ?>>
-            <input required type="text" placeholder="Enter Full Name" name="name">
-            <input required type="date" name="birthdate">
-            <input required type="password" placeholder="password" name="password" <?php if(isset($_POST['password'])){ ?> value="<?php echo $_POST['password'] ?>" <?php } ?>>
-            <input required type="password" placeholder="password" name="repeat">
+            <input required type="text" placeholder="Fyll i Email" name="email" <?php if(isset($_POST['email'])){ ?> value="<?php echo $_POST['email'] ?>" <?php } ?>>
+            <input required type="text" placeholder="Fyll i fullständig namn" name="name">
+            <input required type="date" name="birthdate" placeholder="Födelsedag">
+            <input required type="password" placeholder="Lösenord" name="password" <?php if(isset($_POST['password'])){ ?> value="<?php echo $_POST['password'] ?>" <?php } ?>>
+            <input required type="password" placeholder="Repetera Lösenord" name="repeat">
             <input required type="color" value="#8046C9" name="color">
-            <button type="submit" name="action" value="regPost">Register</button>
+            <button type="submit" name="action" value="regPost">Registrera</button>
         </form>
     </div>
 </body>

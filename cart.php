@@ -35,13 +35,13 @@
 
     $_SESSION['cart'] = json_encode($cart);
     $_SESSION['cartType'] = json_encode($type);
-    require("navbar.php");
 ?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
     <title>Kundvagn</title>
+    <?php require('navbar.php'); ?>
 </head>
 <body>
    <div id="userFeed">
