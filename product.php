@@ -190,7 +190,7 @@ if($saleCheck = mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM sale WHERE p
         </div>
         <div id="tagContainer">
             <?php
-                    $tags = mysqli_query($dbc, "SELECT * FROM tagproduct JOIN tags ON tag = id WHERE product = " . $product['id'] . " ORDER BY name;");
+                    $tags = mysqli_query($dbc, "SELECT * FROM tagProduct JOIN tags ON tag = id WHERE product = " . $product['id'] . " ORDER BY name;");
                     while($tag = mysqli_fetch_array($tags)){ ?>
             <a href="">
                 <div class="tag">

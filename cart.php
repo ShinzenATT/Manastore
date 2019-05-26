@@ -121,7 +121,9 @@ delete
       <?php }
        
        if(count($cart) == 0){ ?>
+          <div class="cartProduct">
            <h3>Kundvagnen är tom</h3>
+       </div>
       <?php }
        ?>
        

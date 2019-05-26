@@ -12,6 +12,7 @@ header("Content-type: text/css"); //makes this file act as a .css file
     else{
         $color = new Color('#6928BA');
     }
+    // makes a color variable and converts it to HSL
     $hsl = $color->getHSL();
 
 ?>
@@ -25,6 +26,9 @@ header("Content-type: text/css"); //makes this file act as a .css file
     
 }
 
+/*
+Colors body and disables default margin and padding
+*/
 
 body {
     padding: 0;
@@ -35,6 +39,8 @@ body {
     transition: 0.6s ease;
 }
 
+/* Changes font */
+
 h1, h2, h3, label {
     font-family:'Ubuntu', sans-serif;
 }
@@ -42,6 +48,10 @@ h1, h2, h3, label {
 h4, h5, p {
     font-family: 'Raleway', sans-serif;
 }
+
+/*
+The constant beta button that redirects the user to github
+*/
 
 #beta{
     
@@ -63,6 +73,8 @@ h4, h5, p {
 #beta div h3{
     margin: 0;
 }
+
+/* Adjusts the navigation bar */
 
 header{
 
@@ -112,10 +124,15 @@ a  {
    
 }
 
+/* Sends the two element groups to the sides */
+
 #navContainer div {
     display: flex;
     justify-content: space-between;
 }
+
+
+/* All navigation bar buttons */
 nav {
     padding-left: 10px;
     padding-right: 10px;
@@ -131,7 +148,7 @@ nav {
 
 
  /*
-material icon font
+material icon font aka transforms text into icons
 */
 nav i , .material {
     font-family: 'Material Icons';
@@ -161,7 +178,7 @@ nav i , .material {
   /* Support for IE. */
   font-feature-settings: 'liga'; 
 }
- /* Cart icon in navbar */
+ /* Cart counter icon in navbar */
 #cartCount {
     background: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>);
     border-radius: 100%;
@@ -186,12 +203,14 @@ nav i , .material {
     
 }
 
+/* Cart icon in navbar */
+
 #cart {
     position: relative;
     top: -19px;
 }
 
-/* hidden search bar */
+/* hidden search bar menu near navbar */
 
 #navSearch form .material {
     font-size: 1em;
@@ -217,6 +236,8 @@ nav i , .material {
     width: 30vw;
 }
 
+/* Search icon in navbar */
+
  #navSearch {
     display: inline-block;
      background-color: hsla(<?php echo $hsl['H'] . ", 60%, 63%, 0.85"; ?>);
@@ -232,11 +253,14 @@ nav i , .material {
      transition: width 0.6s ease;
 }
 
+/* Menu icon in navbar (Note: only visible in small widths) */
+
 #navMenu {
     display: none;
     
 }
 
+/* Account menu when logged in */
 
 #accountMenu {
     width: 450px;
@@ -284,6 +308,10 @@ nav i , .material {
     height: 200px;;
     
 }
+
+/*
+    Profile Picture
+*/
 
 .pfp{
     background-position: center;
@@ -395,6 +423,7 @@ nav i , .material {
   opacity: 0.7;
 }
 
+/* Adjusts the buttons in modal */
 .container div {
     display: flex;
     justify-content: space-between;
@@ -455,6 +484,8 @@ nav i , .material {
   display: none;
 }
 
+/* Adjusts the images and youtube videos in slideshows */
+
 .mySlides img, .mySlides iframe {
     height: 55vh;
     background-attachment: fixed;
@@ -466,21 +497,18 @@ nav i , .material {
     position: relative;
 }
 
+/* Adjusts the thumbnail in youtube videos */
 .ytp-cued-thumbnail-overlay-image{
     background-attachment: fixed;
+    background-size: cover;
 }
 
+/* Applies shadows to slideshow images */
 .mySlides img{
     z-index: -2;
 }
 
-.mySlides img::before {
-    background-image: url(https://png.pngtree.com/element_pic/16/12/25/abfda2d1b6f786267d65b1034c44c9c5.jpg);
-    background-position: center;
-    background-size: contain;
-}
-
-/* Next & previous buttons */
+/* Next & previous buttons in slideshows */
 .prev, .next {
   cursor: pointer;
   position: absolute;
@@ -510,6 +538,7 @@ nav i , .material {
     box-shadow: -1vw 0 5px #fff5;
 }
 
+/* position the "previous button" to the left */
 .prev {
     left: 0;
    /* box-shadow: 0.2vw 0 5px #0003;*/
@@ -519,15 +548,15 @@ nav i , .material {
     box-shadow: 1vw 0 7px #fff5;
 }
 
-/* On hover, add a black background color with a little bit see-through */
+/* On hover, add a white background color which is a little bit see-through */
 .prev:hover, .next:hover{
   background-color: #fff5;
   color: <?php echo "hsl(" . $hsl['H'] . ", 65%, 44%)"; ?>;
 }
 
-/* Caption text */
+/* Caption text  in slideshows */
 .text {
-  color: #f2f2f2;
+  color: #eee;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
@@ -537,7 +566,7 @@ nav i , .material {
     width: 40vw;
 }
 
-/* The dots/bullets/indicators */
+/* The dots/bullets/indicators in slideshows */
 .dot {
   cursor: pointer;
   height: 10px;
@@ -551,6 +580,7 @@ nav i , .material {
     opacity: 20%;
 }
 
+/* container for dots or indicators in slideshows */
 #dotContainer {
     position: absolute;
     margin: auto;
@@ -559,9 +589,12 @@ nav i , .material {
     
 }
 
+/* Color the active dot with accent color */
 .active, .dot:hover {
   background-color: hsl(<?php echo $hsl['H'] . ", 55%, 53%"; ?>);
 }
+
+/* Adjusts the link button in the startpage slideshow */
 .highlightButton {
     display: inline-block;
     width: 170px;
@@ -591,6 +624,7 @@ nav i , .material {
     margin: 0;
 }
 
+/* Adds a shadow to slideshows */
 #shadow {
     background-color: #0000;
     height: 20vh;
@@ -623,6 +657,9 @@ nav i , .material {
 }
 */
 
+/*
+Container for many product containers in startpage
+*/
 
 #Discover {
     width: 70vw;
@@ -635,6 +672,7 @@ nav i , .material {
    
 }
 
+/* Container for smaller product containers */
 .productContainer {
      display: flex;
     justify-content: space-between;
@@ -642,12 +680,14 @@ nav i , .material {
     flex-wrap: wrap;
 }
 
+/* Adjusts headers in mega container */
 #Discover h2 {
     margin: 0.7vw;
     margin-left: 1vw;
     width: 100%;
 }
 
+/* Container for product information */
 .product{
     width: 9vw;
     min-width: 180px;
@@ -658,6 +698,8 @@ nav i , .material {
     border: 1px solid hsl( <?php echo $hsl["H"] . ", 60%, 63%"; ?>);
     display: inline-block;
 }
+
+/* Product title */
 
 .product h3 {
     margin: 5px;
@@ -671,6 +713,7 @@ nav i , .material {
     font-size-adjust: auto;
 }
 
+/* Product thumbnail */
 .product img{
     background-size: cover;
     background-position: center;
@@ -682,6 +725,7 @@ nav i , .material {
     border: 1px solid hsl( <?php echo $hsl["H"] . ", 60%, 63%"; ?>);
 }
 
+/* Product platforms/consoles */
 .platformsA {
     display: flex;
     overflow-y: hidden;
@@ -693,11 +737,13 @@ nav i , .material {
     scrollbar-width: none;
 }
 
+/* Reveal horizontal scrollbar */
 .platformsA:hover{
       scrollbar-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>) #605B7C;
     scrollbar-width: thin;
 }
 
+/* Adjusting horizontal scrollbar */
 .platformsA::-webkit-scrollbar{
     height: 0px;
 }
@@ -718,6 +764,7 @@ nav i , .material {
     border-radius: 30px;
 }
 
+/* Platform groups */
 .platformsA span {
     display: flex;
     border-radius: 10px;
@@ -725,13 +772,14 @@ nav i , .material {
     margin-left: 3px;
 }
 
+/* Colored part in platform groups */
 #platformHighlight {
     background-color: hsl(<?php echo $hsl['H'] . ",66%, 75%" ?>);
     margin: 0;
 }
 
 
-
+/* Images in platform container */
 .platformsA img {
     height: 2vh;
     min-height: 10px;
@@ -743,11 +791,7 @@ nav i , .material {
     
 }
 
-.product:hover .platformsA {
-    overflow-x: auto;
-    /* margin-bottom: 0; */
-}
-
+/* Price in product container in startpage */
 .pricePreview{
     display: flex;
     align-items: center;
@@ -780,6 +824,7 @@ nav i , .material {
     text-align: center;
 }
 
+/* Colored part of price (price for digital copy) */
 .highlightPrice {
     background-color: hsl(<?php echo $hsl['H'] . ",66%, 75%" ?>) ;
     border:  1px solid hsl(<?php echo $hsl['H'] . ",66%, 75%" ?>);
@@ -791,12 +836,14 @@ nav i , .material {
     text-align: center;
 }
 
+/* Colored price changes to white on hover of container */
 .product:hover  .pricePreview .highlightPrice {
     background-color: #fff;
     color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
     border:  1px solid hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
 }
 
+/* Sale precentage */
 .saleA {
     background-color: #fff;
     border:  1px solid hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
@@ -808,6 +855,7 @@ nav i , .material {
     
 }
 
+/* Unused Menu 
 #menu1 {
     position: fixed;
     background-color: #2B2642;
@@ -817,7 +865,9 @@ nav i , .material {
     left: 0.5vw;
     color: white;
 }
+*/
 
+/* Adjusts container in registration page */
 #register {
     width: 70vw;
     background-color: #2B2642;
@@ -827,6 +877,7 @@ nav i , .material {
     border-radius: 20x;
 }
 
+/* Adjusts buttons and inputs in registration page */
 #register input, #register button {
     width: 100%;
     margin: 5px;
@@ -840,6 +891,7 @@ nav i , .material {
     margin: 25px auto;
 }
 
+/* Error message in registration page or other pages */
 #error {
     width: 100%;
     color: #fff;
@@ -847,6 +899,7 @@ nav i , .material {
     padding: 0.2vw;
 }
 
+/* Adjusts the userFeed container in profile view */
 #userFeed {
     background-color: #2B2642;
     padding-bottom: 1vh;
@@ -859,6 +912,7 @@ nav i , .material {
     border-radius: 10px;
 }
 
+/* Colored container for user info */
 #userInfo {
     background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
     padding: 1vw;
@@ -872,11 +926,13 @@ nav i , .material {
     font-size: 0.8em;
 }
 
+/* profile picture in userinfo */
 #userInfo .pfp {
     width: 15vw;
     height: 15vw;
 }
 
+/* Text in userinfo */
 #userInfo div {
     display: flex;
     justify-content: space-between;
@@ -885,6 +941,7 @@ nav i , .material {
     font-size: 1.2em;
 }
 
+/* buttons in userinfo */
 #userInfo div span form button{
     border: none;
     width: 9vw;
@@ -903,6 +960,7 @@ nav i , .material {
     border: 1px #fff solid;
 }
 
+/* inputs and buttons in profile edit page */
 .profileEdit input, .profileEdit button{
     margin: 0.2vw;
     width: 250px;
@@ -912,7 +970,7 @@ nav i , .material {
     display: inline;
 }
 
-
+/* forms in profile edit page */
 .profileEdit {
     padding: 0.5vw;
     
@@ -922,6 +980,7 @@ nav i , .material {
     display: inline-block;
 }
 
+/* Adresses in profile edit page */
 .adress {
     background-color: #44405E;
     border-radius: 20px;
@@ -932,6 +991,7 @@ nav i , .material {
     margin: auto;
 }
 
+/* Buttons in adress contianers */
 .adress button {
     height: 35px;
     width: 200px;
@@ -941,12 +1001,14 @@ nav i , .material {
     display: inline;
 }
 
+/* Adjusts the dot container in product slideshows */
 .productSlideshow #dotContainer {
     text-align:center; 
     left: 16vw; 
     right: auto;
 }
 
+/* Product overview info in product page (contains title platforms and such) */
 #productOverview {
     background-color: #44405Eea;
     color: #fff;
@@ -959,6 +1021,7 @@ nav i , .material {
     border-radius: 20px;
 }
 
+/* Adjusts the text to be at the sides */
 #productOverview span{
     display: flex;
     justify-content: space-between;
@@ -966,27 +1029,34 @@ nav i , .material {
     padding: 0;
 }
 
+/* Adjusts text */
 #productOverview span h5 {
     margin: 5px;
     padding: 0;
 }
 
+/* Adjusts title in product page */
 #productOverview h2 {
     color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
     margin-bottom: 0.5vh;
 }
 
+/* An attempt at making tags scrollable */
 #tagContainer {
+    /*
     overflow-x: auto;
     overflow-y: hidden;
     scrollbar-width: none;
+    */
     width: 100%;
 }
 
+/*
 #tagContainer:hover{
       scrollbar-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>) #605B7C;
     scrollbar-width: thin;
 }
+
 
 #tagContainer::-webkit-scrollbar{
     height: 0px;
@@ -1007,7 +1077,9 @@ nav i , .material {
     height: 5px;
     border-radius: 30px;
 }
+*/
 
+/* The tags in the product page */
 .tag {
     display: inline-block;
     box-sizing: border-box;
@@ -1032,12 +1104,14 @@ nav i , .material {
     margin: 0;
 }
 
+/* Container for purchase buttons in product page */
 #purchase {
     position: relative;
     left: 15vw;
     width: 48vw;
 }
 
+/* Purchase buttons */
 .purchase {
     background-color: #44405E;
     display:inline-block;
@@ -1052,11 +1126,13 @@ nav i , .material {
     margin-left: 0;
 }
 
+/* Adjusts title in product button area */
 .purchase h2 {
     margin: auto 1vh;
     width: 100%;
 }
 
+/* actual purchase button */
 .pButton1{
     color: #fff;
     font-size: 20px;
@@ -1068,6 +1144,7 @@ nav i , .material {
     transition: 0.6s ease;
 }
 
+/* Cart icon part of actual purchase button */
 .pButton2 {
     background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
     border-radius: 20px;
@@ -1077,27 +1154,32 @@ nav i , .material {
     
 }
 
+/* Adjusts icon in purchase button */
 .pButton2 i {
     font-size: 18px;
     margin: 3px 5px 5px 3px;
     color: #fff;
 }
 
+/* Text in purchase  button */
 .pButton1 p {
     display: inline-block;
     margin: 3px 10px;
 }
 
+/* Color chnage on hove in button */
 .purchase:hover button .pButton2 .pButton1 {
     color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
 }
 
+/* Adjusts the buttons */
 .purchase button {
     background-color: #0000;
     border: none;
     border-radius: 20px;
 }
 
+/* Adjusts the description area in product page */
 #description {
     background-color: #44405E;
     position: relative;
@@ -1118,10 +1200,12 @@ nav i , .material {
     margin: 0 0.7vw;
 }
 
+/* Colors the headers in description area */
 #description h1, #description h2, #description h3{
     color:  hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
 }
 
+/* The expand button in the description area */
 .expand {
     width: 100%;
     background-color:  hsla(<?php echo $hsl['H'] . ", 55%, 53%, 0.9" ?>);
@@ -1134,6 +1218,7 @@ nav i , .material {
     height: 20px;
 }
 
+/* The container for misc product info such as age rating */
 #productInfo {
     position: relative;
     right: 16vw;
@@ -1145,6 +1230,7 @@ nav i , .material {
     flex-wrap: wrap;
 }
 
+/* Adjusts the divs for misc info in product page */
 .pInfoPart {
     background-color: #44405E;
     border-radius: 20px;
@@ -1158,12 +1244,14 @@ nav i , .material {
     margin-bottom: 1vh;
 }
 
+/* Adjusts the age rating image in product info */
 .pInfoPart img {
     height: 60px;
     margin: 0;
     margin-right: 15px;
 }
 
+/* Adjust text in misc product info */
 .pInfoPart span {
     display: block;
     flex-wrap: nowrap;
@@ -1171,12 +1259,14 @@ nav i , .material {
     font-size: 0.9em;
 }
 
+/* Adjusts headers in misc product info */
 .pInfoPart span h2, .pInfoPart span h1 {
     margin: 0;
     font-size: 1.1em;
     color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
 }
 
+/* Adjusts the cart items in the cart page */
 .cartProduct {
     background-color: #44405E;
     box-sizing: border-box;
@@ -1187,6 +1277,7 @@ nav i , .material {
     justify-content: flex-start;
 }
 
+/* Adjusts the image in cart items */
 .cartProduct img {
     width: 11vw;
     height: 6vw;
@@ -1198,6 +1289,7 @@ nav i , .material {
     border: none;
 }
 
+/* Adjusts the text nad buttons in cart items */
 .cartProduct div:not(.priceO), .cartProduct div span {
     height: 100%;
     display: flex;
@@ -1213,6 +1305,7 @@ nav i , .material {
     width: 40%;
 }
 
+/* Adjusts the titles in cart items */
 .cartProduct div h2 {
     display: inline-block;
     margin: 0;
@@ -1220,16 +1313,19 @@ nav i , .material {
     width: 60%;
 }
 
+/* Items that have discounts shall have colored text in cart items */
 .saleText {
     color: hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
     font-weight: 600;
 }
 
+/* Price in cart items */
 .priceO {
     display: inline-block;
     width: auto;
 }
 
+/* Adjusts the buttons in the cart page */
 .cartProduct div span form button, #cartActions button {
     border-radius: 20px;
     border: 1px #0000 solid;
@@ -1244,11 +1340,13 @@ nav i , .material {
     border-color: hsl(<?php echo $hsl['H'] . ", 65%, 44%" ?>);
 }
 
+/* Adjusts the non cart item buttons in cart page */
 #cartActions {
     margin: 1vw;
     
 }
 
+/* Adjusts the container for payment methods in checkout page */
 #payContainer {
     background-color: #2B2642;
     padding: 1vh;
@@ -1261,6 +1359,7 @@ nav i , .material {
     border-radius: 10px;
 }
 
+/* Adjusts payament methods */
 #payContainer button {
     border: none;
     background: #0000;
@@ -1268,12 +1367,14 @@ nav i , .material {
     color: #fff;
 }
 
+/* Adjusts image in payament methods */
 #payContainer div img {
     height: 50px;
     margin: 10px;
     border-radius: 10px;
 }
 
+/* Designing payment method buttons */
 #payContainer div {
     display: flex;
     justify-content: flex-start;
@@ -1285,12 +1386,14 @@ nav i , .material {
     align-items: center;
 }
 
+/* Adjusts the adress slect input if avalible in checkout page */
 #payContainer div select {
     width: 100%;
     border-radius: 20px;
     height: 30px;
 }
 
+/* Contianer of about us info */
 #aboutusContainer{
     background-color: #44405E;
     border-radius: 20px;
@@ -1305,19 +1408,24 @@ nav i , .material {
     min-width: 608px;
 }
 
+/* Hides the link menu in navbar */
 #menu {
     display: none;
 }
 
+/* Adjusts the following elements in a small viewport (Typical tablet viewport) */
 @media screen and (max-width: 900px){
+    /* Hides link texts in navbar when viewport is small */
     #navLeft nav {
         display: none;
     }
     
+    /* Display menu button in smaller viewports */
     #navMenu {
         display: inline-block;
     }
     
+    /* Sends the beta button to the right of the screen */
     #beta div {
         transform: rotate(-90deg);
         right: -20px;
@@ -1326,10 +1434,12 @@ nav i , .material {
         z-index: 2;
     }
     
+    /* Adjusts buttons in account menu in small viewport */
     #accountMenuContent div a button, #accountMenuContent div form button {
         padding: 10px 3px;
     }
     
+    /* adjusts the link menu in navbar when open */
     #menu {
         background-color: hsla(<?php echo $hsl['H'] . ", 85%, 34%, 0.9"; ?>);
         display: inline-block;
@@ -1342,6 +1452,7 @@ nav i , .material {
         padding: 0;
     }
     
+    /* Sections the menu into fourths, one for each element */
     #menu nav {
         display: inline-block;
         width: 24.52%;
@@ -1355,18 +1466,25 @@ nav i , .material {
         color: hsl(<?php echo $hsl['H'] . ", 85%, 34%"; ?>);
     }
     
+    /* lifts the link button in slideshows */
     .highlightButton {
-        top: 62%;
+        top: auto;
+        bottom: 15vh;
+        left: auto;
+        float: right;
     }
     
+    /* more space for text in slideshows */
     .text {
-        width: 65.6%
+        width: 65.6%;
     }
     
+    /* makes a bigger shadow */
     #shadow {
         box-shadow: 0 -14vh 60px #000b;
     }
     
+    /* makes the product overview cover a large portion of the screen in small viewports */
     #productOverview {
         right: 5%;
         left: 5%;
@@ -1377,6 +1495,7 @@ nav i , .material {
         margin-bottom: 0;
     }
     
+    /* makes the buttons cover most of the width in the screen */
     #purchase{
         width: 90%;
         left: 5%;
@@ -1384,12 +1503,14 @@ nav i , .material {
         top: -6vh;
     }
     
+    /* makes the description cover most of the screen */
     #description {
         width: 90%;
         left: 5%;
         top: -6vh;
     }
     
+    /* same as the above */
     #productInfo {
         position: relative;
         top: 0;
@@ -1399,32 +1520,39 @@ nav i , .material {
         top: -6vh;
     }
     
+    /* adjusts the shadow in the product slideshow */
     .productSlideshow #shadow {
         top: 55vh;
     }
     
+    /* adjust the container to cover a large portion of the screen */
     #userFeed {
         width: 80%;
     }
     
+    /* makes the text appear below the title in cart items in the cart page */
     .cartProduct div{
-        flex-wrap: wrap !important;
+        flex-wrap: wrap !important; /* '!important' increases spcificity */ 
     }
     
+    /* adjusts the thumbnail in cart items */
     .cartProduct img {
         height: 12vw;
         width: 17vw
     }
     
+    /* adjusts the text and buttons below the title in cart items */
     .cartProduct div span {
         width: 100%;
     }
     
+    /* adjusts title cart items */
     .cartProduct div h2{
         width: 100%;
         font-size: 1.2em;
     }
     
+    /* makes the text wrap in user info */
     #userInfo div span {
         display: inline-block;
         width: 100%;
@@ -1441,15 +1569,18 @@ nav i , .material {
         flex-wrap: wrap;
     }
     
+    /* adjusts the buttons in userinfo */
     #userInfo div span form button {
         padding: 10px;
         width: auto;
     }
     
+    /* increases the width */
     #payContainer {
         width: 75%;
     }
     
+    /* increases the form and input sizes in profile edit */
     .profileEdit{
         width: 50%;
         box-sizing: border-box;
@@ -1460,6 +1591,7 @@ nav i , .material {
         width: 100%;
     }
     
+    /* adjusts the adress containers and buttons */
     .adress button {
         width: 200px;
     }
@@ -1468,10 +1600,12 @@ nav i , .material {
         margin: 3px;
     }
     
+    /* makes the input larger in register page */
     #register form {
         width: 99%;
     }
     
+    /* adjusts the width of tha about us container */
     #aboutusContainer{
         min-width: 0;
         width: 80%;
@@ -1479,22 +1613,27 @@ nav i , .material {
         right: 10%;
     }
     
+    /* hides the console image in small viewport in the about page */
     #imgConsole{
         display: none;
     }
     }
 
+/* the following applies in even smaller viewports (typical mobile widths) */
 @media screen and (max-width: 640px){
     
+    /* makes the beta button smaller */
     #beta{
         font-size: 0.8em;
         border-radius: 10px;
     }
     
+    /* moves the buttons further to the sides in navbar */
     #navContainer{
         width: 90%;
     }
     
+    /* adjusts the search element to have full width */
     #navSearch{
         width: 100%;
         left: 0;
@@ -1513,6 +1652,7 @@ nav i , .material {
         width: 50vw;
     }
     
+    /* adjusts the accountmenu to have full width */
     #accountMenu {
         width: 100%;
         right: 0;
@@ -1523,14 +1663,17 @@ nav i , .material {
         height: 35vw;
     }
     
+    /* makes the buttons biger and wider */
     #accountMenuContent div a button, #accountMenuContent div form button {
        padding: 10px 3vw;
     }
     
+    /* makes the links full width in link menu */
     #menu nav {
         width: 100%;
     }
     
+    /* mkaes the button in slideshow full width and at the bottom of the slideshow */
     .highlightButton {
         top: auto;
         bottom: 0;
@@ -1538,54 +1681,68 @@ nav i , .material {
         border-radius: 20px 20px 0 0 ;
         width: 100%;
         z-index: 1;
+        border-radius: 0;
     }
     
+    /* adjusts the text for smaller viewport */
     .text {
         top: auto;
-        bottom: 50
+        bottom: 40px;
+        height: auto;
     }
+    
+    /* moves the dots to the top of the slideshow */
     #dotContainer{
         top: 70px;
         right: 45%
     }
     
+    /* adjusts the shadow to be above the button */
     #shadow {
         top: 50vh
     }
     
+    /* adjusts the width */
     #Discover{
         width: 98%
     }
     
+    /* adjusts the width */
     #userFeed {
         width: 90%;
     }
     
+    /* adjusts the thumbnail in cart items in cart page */
     .cartProduct img {
         height: 19vw;
         width: 27vw;
     }
     
+    /* adjusts the text in user info */
     #userInfo div span *:not(form button) {
         width: 100%;
     }
     
+    /* mkaes the profile picture appear at the top */
     #userInfo {
         display: flex;
         flex-wrap: wrap;
     }
     
+    /* bigger picture */
     #userInfo .pfp {
         width: 300px;
         height: 300px;
         margin: auto;
     }
     
+    /* makes the inputs have full width in profile edit page */
     .profileEdit {
         width: 100%;
         margin-bottom: 15px;
     }
     
+    /* adjusts the positioning of the adress elements */
     .adress {
         width: 48%;
         box-sizing: border-box;
@@ -1594,10 +1751,12 @@ nav i , .material {
         font-size: 3vw;
     }
     
+    /* adjusts the buttons in adress elements */
     .adress button {
         width: 100%;
     }
     
+    /* adjusts the register container in register page */
     #register {
         width: 90%;
     }

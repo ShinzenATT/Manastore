@@ -36,7 +36,10 @@
                     break;
             }    
             ?>
-            ">
+            " <?php if($highlight['type'] == 'link'){ ?>
+            target="_blank"
+            <?php } ?>
+            >
             <div class="mySlides fade" style="
                <?php if($first){
                 $first = false; ?>
@@ -62,18 +65,14 @@
                     echo "bottom";
                 }
                 ?>">
-                <div class="text">
-                    <h3><?php echo $highlight['title']; ?></h3>
-                    <p><?php echo $highlight['description']; ?></p>
-                </div>
                 <!-- Button -->
                 <div class="highlightButton">
                     <h3><?php switch($highlight['type']){
                 case "link":
-                    echo "Go to page";
+                    echo "Gå till sida";
                     break;
                 case "blog":
-                    echo "Go to article";
+                    echo "Gå till artikel";
                     break;
                 case "product":
                         $price = "TBA";
@@ -93,6 +92,10 @@
                     break;       
             }
                     ?></h3>
+                </div>
+                <div class="text">
+                    <h3><?php echo $highlight['title']; ?></h3>
+                    <p><?php echo $highlight['description']; ?></p>
                 </div>
             </div>
         </a>

@@ -1,5 +1,7 @@
 <?php 
  require_once("connect.php");
+$sql = "SELECT * FROM chartest";
+header('Content-type: text/html; charset=utf-8');
 setlocale(LC_ALL, "sv_SE");
 $status = null;
 if(isset($_SESSION['status'])){
