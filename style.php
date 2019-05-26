@@ -976,6 +976,38 @@ nav i , .material {
     margin-bottom: 0.5vh;
 }
 
+#tagContainer {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    width: 100%;
+}
+
+#tagContainer:hover{
+      scrollbar-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>) #605B7C;
+    scrollbar-width: thin;
+}
+
+#tagContainer::-webkit-scrollbar{
+    height: 0px;
+}
+
+#tagContainer:hover::-webkit-scrollbar {
+    height: 10px;
+    margin-top: 1px;
+}
+
+#tagContainer::-webkit-scrollbar-thumb{
+    background-color: hsl(<?php echo $hsl['H'] . ", 60%, 63%" ?>);
+    border-radius: 7px;
+}
+
+#tagContainer::-webkit-scrollbar-track-piece {
+    background-color: #605B7C;
+    height: 5px;
+    border-radius: 30px;
+}
+
 .tag {
     display: inline-block;
     box-sizing: border-box;
@@ -986,7 +1018,8 @@ nav i , .material {
     border-radius: 10px;
     transition: 0.6s ease;
     max-height: 2.5em;
-    overflow-x: auto;
+    overflow: hidden;
+    text-align: center;
 }
 
 .tag:hover {
@@ -1077,6 +1110,7 @@ nav i , .material {
     border-radius: 20px;
     max-height: 50vh;
     overflow: hidden;
+    padding: 20px;
 }
 
 #description span {
@@ -1084,11 +1118,16 @@ nav i , .material {
     margin: 0 0.7vw;
 }
 
+#description h1, #description h2, #description h3{
+    color:  hsl(<?php echo $hsl['H'] . ", 60%, 63%"; ?>);
+}
+
 .expand {
     width: 100%;
     background-color:  hsla(<?php echo $hsl['H'] . ", 55%, 53%, 0.9" ?>);
     position: absolute;
     bottom: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1096,10 +1135,11 @@ nav i , .material {
 }
 
 #productInfo {
-    position: absolute;
+    position: relative;
     right: 16vw;
     width: 18vw;
-    top: 78vh;
+    float: right;
+    top: 5vh;
     display: flex;
     align-content: space-between;
     flex-wrap: wrap;
@@ -1119,8 +1159,9 @@ nav i , .material {
 }
 
 .pInfoPart img {
-    height: 120px;
+    height: 60px;
     margin: 0;
+    margin-right: 15px;
 }
 
 .pInfoPart span {

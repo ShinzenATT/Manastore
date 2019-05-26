@@ -188,7 +188,7 @@ if($saleCheck = mysqli_fetch_array(mysqli_query($dbc,"SELECT * FROM sale WHERE p
             <img src="img/Nintendo-3DS-01%20%5BKonvert%5D.svg" alt="">
             <?php } ?>
         </div>
-        <div>
+        <div id="tagContainer">
             <?php
                     $tags = mysqli_query($dbc, "SELECT * FROM tagproduct JOIN tags ON tag = id WHERE product = " . $product['id'] . " ORDER BY name;");
                     while($tag = mysqli_fetch_array($tags)){ ?>

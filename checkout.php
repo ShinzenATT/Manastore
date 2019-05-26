@@ -57,6 +57,7 @@
     <p>Redirecting to payment site...</p>
     <a href="checkout.php" style="display:none;" id="redirect"><p>Click here if you are not redirected.</p></a>
     <?php }
+    
     else if(isset($_SESSION['payed']) && isset($_SESSION['cart']) && isset($_SESSION['cartType']) && $_SESSION['payed'] && count($cart = json_decode($_SESSION['cart'], true)) != 0 && count($type = json_decode($_SESSION['cartType'], true)) != 0){
         unset($_SESSION['payed']);
         $adress = "";
@@ -70,23 +71,28 @@
        <div id="payContainer">
         <?php if(mysqli_query($dbc, "INSERT INTO orders (userID, orderDate, status $adress2 ) VALUES (". $_SESSION['user'] .", '" . $date . "', 'payed' $adress );")){ 
            $order = mysqli_fetch_array(mysqli_query($dbc, "SELECT * FROM orders WHERE orderDate = '$date' AND userID = " . $_SESSION['user'] . ";"));
+            $spent = 0;
             for($i = 0; $i < count($cart); $i++){
                 $physical = "";
+                $priceCheck = mysqli_fetch_array(mysqli_query($dbc, "SELECT * FROM product WHERE id = " . $cart[$i] . ";"));
                 if($type[$i]){
                     $physical = 'physical';
+                    $spent += $priceCheck['physicalPrice'];
                 }
                 else {
                     $physical = 'digital';
+                    $spent += $priceCheck['digitalPrice'];
                 }
                 mysqli_query($dbc, "INSERT INTO orderproduct VALUES(" . $order['orderNR'] . ", " . $cart[$i] . " , 1, '$physical')");
                 
             }
+            mysqli_query($dbc, "UPDATE users SET spent = spent + $spent WHERE id =" . $_SESSION['user'] . ";");
             unset($_SESSION['cart']);
             unset($_SESSION['cartType']);
            ?>
             
-                <h2>Tack för att du beställde!</h2>
-                <p>Du får en order bekräftelse och nycklar via mejl. Din order nummer är <?php echo $order['orderNR']; ?></p>
+                <h2>Tack för att du handlade hos Manastore!</h2>
+                <p>Du får en order bekräftelse med spårningsnummer och eventuella nycklar via mejl. Din order nummer är <?php echo $order['orderNR']; ?>.</p>
             
       <?php  }
         ?>

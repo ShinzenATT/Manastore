@@ -29,7 +29,7 @@
                     echo $highlight['target'];
                     break;
                 case "product":
-                    echo "#";
+                    echo "product.php?product=" . $highlight['target'];
                     break;
                 case "blog":
                     echo "#";
@@ -76,7 +76,20 @@
                     echo "Go to article";
                     break;
                 case "product":
-                    echo "TBA";
+                        $price = "TBA";
+                        $check = mysqli_fetch_array(mysqli_query($dbc, "SELECT * FROM product WHERE identifier = '" . $highlight['target'] . "';"));
+                        $saleCheck = mysqli_query($dbc, "SELECT * FROM sale WHERE product = ". $check['id'] .";");
+                                            $precent = 1;
+                        if($sale = mysqli_fetch_array($saleCheck)){
+                            $precent = (100 - $sale['discount'])/100;
+                        }
+                        if(isset($check['digitalPrice'])){
+                            $price = (int)($precent * $check['digitalPrice']) . "kr";
+                        }
+                        else if(isset($check['physicalPrice'])){
+                            $price = (int)($precent * $check['physicalPrice']) . "kr";
+                        }
+                    echo $price;
                     break;       
             }
                     ?></h3>
