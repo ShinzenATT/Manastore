@@ -1516,7 +1516,7 @@ Container for many product containers in startpage
         top: 0;
         width: 90%;
         right: 5%;
-        left: 5%;
+        left: auto;
         top: -6vh;
     }
     
